@@ -3,1873 +3,898 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<base target="_blank">
+<base target="_top">
 <title>Lit Hub · Deepshikha</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
 <style>
 :root{
-  --bg:#F7F5F1;
-  --bg2:#FFFFFF;
+  --bg:#F6F4F1;
+  --bg-soft:#F9F7F4;
   --surface:#FFFFFF;
-  --border:#E4DDD4;
-  --text:#1C1917;
-  --muted:#78716C;
-  --primary:#3730A3;
-  --primary-l:#EEF2FF;
-  --primary-d:#312E81;
-  --accent:#92400E;
-  --accent-l:#FEF3C7;
-  --coral:#C2410C;
-  --coral-l:#FFF1EE;
-  --teal:#0F766E;
-  --teal-l:#CCFBF1;
-  --shadow:rgba(55,48,163,0.07);
-  --shadow2:rgba(0,0,0,0.05);
-  --ink:#0C0A09;
-  --radius:16px;
+  --surface-soft:#F4F2FB;
+  --border:#E2DFD8;
+  --border-strong:#C7C2B7;
+  --text:#18181B;
+  --muted:#6B7280;
+  --primary:#1D3A6E;
+  --primary-soft:#E3ECFF;
+  --primary-strong:#102347;
+  --accent:#C2683C;
+  --accent-soft:#FDEAD9;
+  --shadow-soft:0 8px 26px rgba(15,23,42,0.08);
+  --shadow-subtle:0 3px 10px rgba(15,23,42,0.06);
   --radius-sm:10px;
+  --radius-md:16px;
   --radius-lg:24px;
+  --radius-xl:32px;
 }
 
-*{box-sizing:border-box;margin:0;padding:0;}
+/* GLOBAL */
+*,*::before,*::after{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{
-  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  margin:0;
+  font-family:"DM Sans",system-ui,-apple-system,sans-serif;
   background:var(--bg);
   color:var(--text);
   line-height:1.7;
   font-size:15px;
   min-height:100vh;
-  overflow-x:hidden;
 }
 body::before{
   content:"";position:fixed;inset:0;z-index:-1;
   background:
-    radial-gradient(ellipse 80% 50% at 0% 0%,rgba(55,48,163,0.05),transparent),
-    radial-gradient(ellipse 60% 60% at 100% 100%,rgba(14,165,233,0.04),transparent),
+    radial-gradient(circle at 0% 0%,rgba(37,99,235,0.08),transparent 60%),
+    radial-gradient(circle at 100% 100%,rgba(251,191,36,0.06),transparent 60%),
     var(--bg);
 }
 a{color:var(--primary);text-decoration:none;}
 a:hover{text-decoration:underline;}
+.content{max-width:1120px;margin:0 auto;padding:22px 18px 60px;}
 
-/* ── TOPBAR ── */
+/* TOPBAR + LOGO */
 .topbar{
-  position:sticky;top:0;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;
-  flex-wrap:wrap;gap:12px;
-  padding:12px 28px;
-  background:rgba(247,245,241,0.93);
-  backdrop-filter:blur(24px);
-  -webkit-backdrop-filter:blur(24px);
-  border-bottom:1px solid var(--border);
-  box-shadow:0 1px 20px var(--shadow2);
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  background:rgba(246,244,241,0.92);
+  border-bottom:1px solid rgba(226,223,216,0.9);
 }
-.brand{display:flex;align-items:center;gap:12px;}
-.brand-icon{
-  width:40px;height:40px;border-radius:14px;
-  background:linear-gradient(135deg,var(--primary),#6366F1);
+.topbar-inner{
+  max-width:1120px;margin:0 auto;
+  padding:10px 14px 8px;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+}
+.logo-wrap{display:flex;align-items:center;gap:10px;}
+.logo-mark{
+  width:38px;height:38px;border-radius:14px;
+  background:
+    radial-gradient(circle at 10% 0%,rgba(248,250,252,1),transparent 60%),
+    conic-gradient(from 210deg,#1D3A6E,#2B4A96,#C2683C,#FACC6B,#1D3A6E);
+  box-shadow:0 10px 26px rgba(15,23,42,0.18);
   display:flex;align-items:center;justify-content:center;
-  font-size:20px;
-  box-shadow:0 6px 20px rgba(55,48,163,0.3);
-  flex-shrink:0;
-  animation:brandPop .6s cubic-bezier(0.16,1,0.3,1);
 }
-@keyframes brandPop{from{transform:scale(0.7);opacity:0;}to{transform:scale(1);opacity:1;}}
-.brand-text h1{
-  font-family:'Playfair Display',Georgia,serif;
-  font-size:21px;font-weight:700;
-  color:var(--ink);letter-spacing:0.01em;
+.logo-mark-inner{
+  width:26px;height:26px;border-radius:9px;
+  background:rgba(15,23,42,0.88);
+  display:flex;align-items:center;justify-content:center;
+  color:#F9FAFB;font-size:15px;font-weight:700;
+  letter-spacing:0.08em;text-transform:uppercase;
 }
-.brand-text p{font-size:12px;color:var(--muted);font-weight:400;}
-.tabs{display:flex;flex-wrap:wrap;gap:4px;}
+.logo-text h1{
+  margin:0;
+  font-family:"Playfair Display",serif;
+  font-size:20px;font-weight:700;
+  letter-spacing:0.04em;text-transform:uppercase;
+  color:var(--primary-strong);
+}
+.logo-text p{
+  margin:0;font-size:11.5px;color:var(--muted);
+}
+
+/* TABS */
+.tabs{
+  display:flex;flex-wrap:nowrap;gap:6px;
+  overflow-x:auto;padding:4px 0 4px 8px;scrollbar-width:none;
+}
+.tabs::-webkit-scrollbar{display:none;}
 .tab{
-  border-radius:999px;border:1.5px solid transparent;
-  background:transparent;padding:7px 16px;
-  font-size:13px;font-weight:500;
-  color:var(--muted);cursor:pointer;
-  display:inline-flex;align-items:center;gap:6px;
-  font-family:'Inter',sans-serif;
-  transition:all .2s;white-space:nowrap;
+  border-radius:999px;border:1px solid transparent;
+  padding:5px 12px;font-size:12px;font-weight:500;
+  background:transparent;color:var(--muted);
+  cursor:pointer;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;
+  transition:background .18s,border-color .18s,color .18s,box-shadow .18s;
 }
-.tab:hover{background:var(--primary-l);color:var(--primary);border-color:rgba(55,48,163,0.2);}
+.tab-icon{
+  width:16px;height:16px;border-radius:999px;
+  background:rgba(15,23,42,0.04);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;
+}
 .tab.active{
-  background:var(--primary);color:#fff;
-  border-color:var(--primary);
-  box-shadow:0 4px 16px rgba(55,48,163,0.3);
+  background:var(--primary);color:#F9FAFB;
+  border-color:var(--primary);box-shadow:0 6px 16px rgba(15,23,42,0.26);
 }
+.tab.active .tab-icon{background:rgba(15,23,42,0.16);}
 
-/* ── LAYOUT ── */
-.content{max-width:1120px;margin:0 auto;padding:28px 20px 60px;}
+/* SECTIONS & CARDS */
 .tab-page{display:none;}
-.tab-page.active{display:block;animation:slideIn .4s cubic-bezier(0.16,1,0.3,1);}
-@keyframes slideIn{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
-.two-col{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:20px;}
-.stack{display:flex;flex-direction:column;gap:18px;}
-
-/* ── SCROLL REVEAL ── */
-.reveal{
-  opacity:0;transform:translateY(30px);
-  transition:opacity .65s cubic-bezier(0.16,1,0.3,1),transform .65s cubic-bezier(0.16,1,0.3,1);
+.tab-page.active{display:block;}
+.section-title{
+  font-family:"Playfair Display",serif;
+  font-size:26px;letter-spacing:-0.02em;
+  margin:0 0 6px;color:var(--primary-strong);
 }
-.reveal.visible{opacity:1;transform:translateY(0);}
-.reveal-d1{transition-delay:.08s;}
-.reveal-d2{transition-delay:.16s;}
-.reveal-d3{transition-delay:.24s;}
-.reveal-d4{transition-delay:.32s;}
-
-/* ── CARDS ── */
+.section-sub{margin:0 0 20px;font-size:13.5px;color:var(--muted);}
 .card{
   background:var(--surface);
   border-radius:var(--radius-lg);
   border:1px solid var(--border);
-  padding:22px 20px;
-  box-shadow:0 4px 24px var(--shadow2);
-  transition:box-shadow .25s;
+  padding:18px 16px;
+  box-shadow:var(--shadow-subtle);
 }
-.card:hover{box-shadow:0 10px 36px rgba(0,0,0,0.08);}
 .card h3{
-  font-family:'Playfair Display',Georgia,serif;
-  font-size:19px;font-weight:700;
-  color:var(--ink);margin-bottom:6px;
+  margin:0 0 6px;
+  font-family:"Playfair Display",serif;
+  font-size:18px;
 }
-.card .hint{font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.6;}
-.section-title{
-  font-family:'Playfair Display',Georgia,serif;
-  font-size:28px;font-weight:800;
-  color:var(--ink);margin-bottom:6px;
-  letter-spacing:-0.01em;
-}
-.section-sub{font-size:14px;color:var(--muted);margin-bottom:24px;line-height:1.6;}
-hr.divider{border:none;border-top:1px solid var(--border);margin:32px 0;}
+.card .hint{margin:0 0 12px;font-size:12.5px;color:var(--muted);}
 
-/* ── HERO ── */
-.hero-wrap{display:grid;grid-template-columns:1.3fr 0.8fr;gap:20px;margin-bottom:28px;}
+/* HERO */
+.hero-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.4fr) minmax(0,0.9fr);
+  gap:18px;margin:6px 0 22px;
+}
 .hero-main{
-  position:relative;overflow:hidden;
-  border-radius:28px;padding:38px 34px;
-  background:linear-gradient(145deg,#EEF2FF 0%,#F5F3FF 45%,#FAF5FF 100%);
-  border:1px solid rgba(99,102,241,0.2);
-  box-shadow:0 24px 64px rgba(55,48,163,0.12);
+  position:relative;
+  padding:20px 18px 18px;
+  border-radius:var(--radius-xl);
+  background:radial-gradient(circle at 0% 0%,#E3ECFF,transparent 55%),
+             radial-gradient(circle at 100% 100%,#FDEAD9,transparent 55%),
+             #EEF1F9;
+  border:1px solid rgba(156,163,175,0.35);
+  box-shadow:0 16px 40px rgba(15,23,42,0.16);
+  overflow:hidden;
 }
-.hero-orb1{
-  position:absolute;top:-90px;right:-90px;
-  width:300px;height:300px;border-radius:999px;
-  background:radial-gradient(circle,rgba(99,102,241,0.15),transparent 70%);
-  animation:floatOrb1 9s ease-in-out infinite;
-  pointer-events:none;
-}
-.hero-orb2{
-  position:absolute;bottom:-70px;left:-50px;
-  width:220px;height:220px;border-radius:999px;
-  background:radial-gradient(circle,rgba(168,85,247,0.12),transparent 70%);
-  animation:floatOrb2 11s ease-in-out infinite;
-  pointer-events:none;
-}
-@keyframes floatOrb1{
-  0%,100%{transform:translate(0,0) scale(1);}
-  33%{transform:translate(-18px,22px) scale(1.08);}
-  66%{transform:translate(12px,-10px) scale(0.95);}
-}
-@keyframes floatOrb2{
-  0%,100%{transform:translate(0,0) scale(1);}
-  50%{transform:translate(16px,-18px) scale(1.1);}
+.hero-label-row{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;
 }
 .hero-kicker{
-  display:inline-flex;align-items:center;gap:8px;
-  font-size:11px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;
-  padding:5px 14px;border-radius:999px;
-  background:rgba(55,48,163,0.08);
-  border:1px solid rgba(55,48,163,0.15);
-  color:var(--primary-d);margin-bottom:18px;
+  display:inline-flex;align-items:center;gap:6px;
+  padding:4px 10px;border-radius:999px;
+  font-size:10px;letter-spacing:0.12em;text-transform:uppercase;
+  border:1px solid rgba(15,23,42,0.18);
+  background:rgba(248,250,252,0.9);
+  color:var(--primary-strong);
 }
-.hero-kicker .dot{
+.hero-kicker-dot{
   width:7px;height:7px;border-radius:999px;
-  background:var(--primary);
-  animation:livePulse 2s infinite;
+  background:radial-gradient(circle,#22C55E,rgba(22,163,74,0.4));
 }
-@keyframes livePulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(.8);}}
+.hero-tag-soft{
+  padding:3px 8px;border-radius:999px;
+  font-size:10.5px;background:rgba(15,23,42,0.06);color:#111827;
+}
 .hero-main h2{
-  font-family:'Playfair Display',Georgia,serif;
-  font-size:36px;font-weight:800;
-  color:var(--ink);line-height:1.18;
-  margin-bottom:14px;letter-spacing:-0.02em;
+  margin:0 0 10px;
+  font-family:"Playfair Display",serif;
+  font-size:26px;letter-spacing:-0.02em;color:var(--primary-strong);
 }
 .hero-main h2 em{
   font-style:normal;
-  background:linear-gradient(120deg,var(--primary),#818CF8,#A78BFA);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  background:linear-gradient(120deg,#1D3A6E,#4F46E5,#C2683C);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
 }
-.hero-main>p{font-size:15px;color:#4A4066;max-width:440px;line-height:1.75;}
-.hero-chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0;}
+.hero-text{margin:0 0 14px;font-size:13.5px;color:#334155;}
+.hero-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
 .hero-chip{
-  padding:5px 14px;border-radius:999px;
-  border:1px solid var(--border);
-  background:rgba(255,255,255,0.85);
-  font-size:12.5px;color:var(--primary-d);font-weight:500;
-  backdrop-filter:blur(4px);
+  padding:4px 10px;border-radius:20px;
+  background:rgba(248,250,252,0.9);
+  border:1px solid rgba(148,163,184,0.45);
+  font-size:11.5px;color:#0F172A;
 }
-.hero-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px;}
-.btn-hero{
-  padding:12px 26px;border-radius:999px;
-  font-size:14px;font-weight:600;
-  border:none;cursor:pointer;
-  font-family:'Inter',sans-serif;
-  display:inline-flex;align-items:center;gap:8px;
-  background:var(--primary);color:#fff;
-  box-shadow:0 8px 24px rgba(55,48,163,0.35);
-  transition:all .25s;position:relative;overflow:hidden;
+.hero-actions{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px;}
+.btn-primary{
+  border:none;border-radius:999px;
+  padding:8px 16px;font-size:13px;font-weight:600;
+  cursor:pointer;
+  background:linear-gradient(135deg,#1D3A6E,#4F46E5);
+  color:#F9FAFB;
+  display:inline-flex;align-items:center;gap:6px;
+  box-shadow:0 10px 26px rgba(15,23,42,0.25);
 }
-.btn-hero::after{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.18) 50%,transparent 100%);
-  transform:translateX(-100%);transition:transform .6s;
+.btn-ghost{
+  border-radius:999px;
+  padding:7px 14px;font-size:12.5px;font-weight:500;
+  border:1px solid rgba(148,163,184,0.7);
+  background:rgba(248,250,252,0.9);
+  color:#111827;cursor:pointer;
+  display:inline-flex;align-items:center;gap:6px;
 }
-.btn-hero:hover::after{transform:translateX(100%);}
-.btn-hero:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(55,48,163,0.42);}
-.btn-hero.outline{
-  background:rgba(255,255,255,0.9);
-  color:var(--primary-d);
-  border:1.5px solid rgba(55,48,163,0.22);
-  box-shadow:0 4px 14px rgba(0,0,0,0.06);
-}
-.btn-hero.outline:hover{background:#fff;box-shadow:0 8px 22px rgba(0,0,0,0.1);}
-.hero-stats{margin-top:20px;display:flex;flex-wrap:wrap;gap:22px;font-size:13px;color:var(--muted);}
-.hero-stats b{color:var(--primary-d);}
+.hero-stat-row{display:flex;flex-wrap:wrap;gap:14px;font-size:11.5px;color:var(--muted);}
 
 /* HERO SIDE */
 .hero-side{
-  border-radius:24px;padding:22px 18px;
-  background:linear-gradient(160deg,#FFFBF5 0%,#F5F3FF 100%);
+  border-radius:var(--radius-lg);
+  background:var(--surface);
   border:1px solid var(--border);
-  box-shadow:0 4px 24px var(--shadow2);
-  display:flex;flex-direction:column;gap:14px;
+  padding:14px 14px 12px;
+  box-shadow:var(--shadow-subtle);
 }
 .hero-side h4{
-  font-family:'Playfair Display',Georgia,serif;
-  font-size:16px;color:var(--ink);font-weight:700;
+  margin:0 0 6px;
+  font-family:"Playfair Display",serif;
+  font-size:15px;
 }
-.mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;flex:1;}
+.hero-side p{margin:0 0 10px;font-size:12px;color:var(--muted);}
+.mode-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
 .mode-card{
-  border-radius:14px;padding:14px 12px;
-  background:rgba(255,255,255,0.9);
+  border-radius:var(--radius-md);
   border:1px solid var(--border);
-  cursor:pointer;transition:all .25s;
+  padding:9px 8px;
+  background:var(--bg-soft);
+  cursor:pointer;
+  transition:background .18s,border-color .18s,transform .18s,box-shadow .18s;
 }
 .mode-card:hover{
-  border-color:rgba(55,48,163,0.3);background:#fff;
-  transform:translateY(-3px);
-  box-shadow:0 8px 24px rgba(55,48,163,0.1);
+  background:#FFFFFF;
+  border-color:var(--border-strong);
+  transform:translateY(-1px);
+  box-shadow:var(--shadow-subtle);
 }
-.mode-card .m-badge{
-  display:inline-block;font-size:10px;font-weight:600;
-  padding:3px 8px;border-radius:6px;
-  background:var(--primary-l);color:var(--primary-d);margin-bottom:6px;
+.mode-badge{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:2px 8px;border-radius:999px;
+  font-size:10px;font-weight:600;
+  background:var(--primary-soft);color:var(--primary-strong);
 }
-.mode-card b{display:block;font-size:13px;color:var(--ink);margin-bottom:3px;font-weight:600;}
-.mode-card small{color:var(--muted);font-size:11.5px;line-height:1.45;}
+.mode-icon-dot{
+  width:8px;height:8px;border-radius:999px;
+  background:radial-gradient(circle,#4F46E5,rgba(79,70,229,0.2));
+}
+.mode-card b{display:block;margin:5px 0 2px;font-size:12.5px;}
+.mode-card small{font-size:11px;color:var(--muted);}
 
-/* ── STATS BAR ── */
-.stats-bar{
-  display:flex;flex-wrap:wrap;gap:0;
+/* STATS BELT */
+.stats-belt{
+  margin:10px 0 22px;
+  display:flex;flex-wrap:wrap;gap:8px;
+}
+.stats-pill{
+  flex:1 1 140px;min-width:0;
+  border-radius:999px;
   background:var(--surface);
-  border-radius:var(--radius-lg);
   border:1px solid var(--border);
-  overflow:hidden;margin-bottom:26px;
-  box-shadow:0 4px 20px var(--shadow2);
+  padding:6px 10px;
+  font-size:11.5px;color:var(--muted);
+  display:flex;align-items:center;justify-content:space-between;
+  box-shadow:0 2px 8px rgba(15,23,42,0.03);
 }
-.stat-item{
-  flex:1;min-width:130px;
-  padding:20px 18px;text-align:center;
-  border-right:1px solid var(--border);
-  transition:background .2s;cursor:default;
-}
-.stat-item:last-child{border-right:none;}
-.stat-item:hover{background:var(--primary-l);}
-.stat-num{
-  font-family:'Playfair Display',Georgia,serif;
-  font-size:30px;font-weight:700;
-  color:var(--primary-d);display:block;
-}
-.stat-label{font-size:12px;color:var(--muted);font-weight:500;margin-top:2px;}
+.stats-pill span:first-child{font-weight:500;color:#111827;}
 
-/* ── NAV GRID ── */
-.nav-grid{
+/* GRID HELPERS */
+.two-col{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(175px,1fr));
-  gap:14px;
+  grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);
+  gap:18px;
 }
-.nav-card{
-  border-radius:20px;padding:22px 18px;
-  background:var(--surface);
-  border:1px solid var(--border);
-  box-shadow:0 4px 18px var(--shadow2);
-  cursor:pointer;
-  transition:all .28s cubic-bezier(0.16,1,0.3,1);
-  position:relative;overflow:hidden;
-}
-.nav-card::after{
-  content:"";position:absolute;
-  top:0;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,var(--primary),#818CF8);
-  transform:scaleX(0);transform-origin:left;
-  transition:transform .3s cubic-bezier(0.16,1,0.3,1);
-}
-.nav-card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 18px 44px rgba(55,48,163,0.13);
-  border-color:rgba(55,48,163,0.2);
-}
-.nav-card:hover::after{transform:scaleX(1);}
-.nav-card .icon{font-size:28px;margin-bottom:12px;}
-.nav-card h3{font-size:14.5px;font-weight:600;color:var(--ink);margin-bottom:5px;}
-.nav-card p{font-size:12.5px;color:var(--muted);line-height:1.55;}
-.nav-card .nc-badge{
-  display:inline-block;font-size:10px;font-weight:600;
-  padding:3px 10px;border-radius:6px;
-  background:var(--primary-l);color:var(--primary-d);margin-top:10px;
-}
+.stack{display:flex;flex-direction:column;gap:14px;}
 
-/* ── RESOURCE CARDS ── */
+/* RESOURCE SECTIONS */
 .r-section{
-  display:flex;align-items:center;gap:12px;
-  margin:32px 0 10px;
-  padding:14px 18px;
-  background:var(--surface);
-  border-radius:var(--radius);
+  display:flex;align-items:center;gap:10px;
+  padding:10px 12px;margin:24px 0 6px;
+  border-radius:var(--radius-md);
+  background:var(--surface-soft);
   border:1px solid var(--border);
-  box-shadow:0 2px 10px var(--shadow2);
 }
-.r-section span{font-size:20px;}
+.r-icon{
+  width:22px;height:22px;border-radius:999px;
+  background:#111827;
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;color:#F9FAFB;
+}
 .r-section h4{
-  font-family:'Playfair Display',Georgia,serif;
-  font-size:18px;font-weight:700;color:var(--ink);
+  margin:0;
+  font-family:"Playfair Display",serif;
+  font-size:16px;
 }
-.r-desc{font-size:13.5px;color:var(--muted);margin:0 0 14px 4px;line-height:1.65;}
+.r-desc{margin:6px 0 12px;font-size:13px;color:var(--muted);}
 .r-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(272px,1fr));
-  gap:14px;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:12px;
 }
 .r-card{
+  border-radius:var(--radius-md);
   background:var(--surface);
-  border-radius:var(--radius);
   border:1px solid var(--border);
-  padding:18px;
-  transition:all .28s cubic-bezier(0.16,1,0.3,1);
-  box-shadow:0 2px 14px var(--shadow2);
-}
-.r-card:hover{
-  border-color:rgba(55,48,163,0.25);
-  transform:translateY(-4px);
-  box-shadow:0 14px 36px rgba(55,48,163,0.1);
+  padding:14px 13px;
+  box-shadow:0 2px 10px rgba(15,23,42,0.04);
 }
 .r-tag{
-  display:inline-block;padding:3px 10px;border-radius:7px;
-  font-size:10px;letter-spacing:0.06em;text-transform:uppercase;
-  margin-bottom:9px;font-weight:700;
+  display:inline-flex;align-items:center;gap:5px;
+  padding:3px 9px;border-radius:999px;
+  font-size:10px;text-transform:uppercase;letter-spacing:0.06em;
+  background:var(--primary-soft);color:var(--primary-strong);
 }
-.rt-p{background:var(--primary-l);color:var(--primary-d);}
-.rt-t{background:var(--teal-l);color:var(--teal);}
-.rt-c{background:var(--coral-l);color:var(--coral);}
-.rt-m{background:var(--accent-l);color:var(--accent);}
-.r-title{font-weight:600;font-size:14px;color:var(--ink);margin-bottom:6px;line-height:1.45;}
-.r-sub{font-size:13px;color:var(--muted);margin-bottom:12px;line-height:1.65;}
-.r-btns{display:flex;flex-wrap:wrap;gap:8px;}
+.r-title{margin:7px 0 4px;font-size:13.5px;font-weight:600;}
+.r-sub{margin:0 0 9px;font-size:12.5px;color:var(--muted);}
+.r-btns{display:flex;flex-wrap:wrap;gap:7px;}
 .r-btn{
-  display:inline-block;padding:7px 15px;border-radius:9px;
-  font-size:12px;font-weight:600;text-decoration:none;
-  font-family:'Inter',sans-serif;transition:all .18s;
+  display:inline-flex;align-items:center;justify-content:center;
+  gap:5px;padding:6px 11px;
+  border-radius:999px;font-size:11.5px;font-weight:600;
+  border:none;cursor:pointer;
 }
-.rb-p{background:var(--primary);color:#fff;}
-.rb-p:hover{background:var(--primary-d);text-decoration:none;transform:translateY(-1px);}
-.rb-t{background:var(--teal);color:#fff;}
-.rb-t:hover{opacity:.85;text-decoration:none;}
-.rb-c{background:var(--coral);color:#fff;}
-.rb-c:hover{opacity:.85;text-decoration:none;}
-.rb-m{background:var(--accent);color:#fff;}
-.rb-m:hover{opacity:.85;text-decoration:none;}
+.rb-main{background:#111827;color:#F9FAFB;}
+.rb-soft{background:var(--bg-soft);color:#111827;}
 
-/* LEVEL BADGES */
-.lv-row{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:9px;}
-.lv{font-size:10px;font-weight:700;padding:3px 9px;border-radius:7px;letter-spacing:.04em;}
-.a1{background:#DCFCE7;color:#14532D;}
-.a2{background:#BBF7D0;color:#166534;}
-.b1{background:#FEF9C3;color:#713F12;}
-.b2{background:#FDE68A;color:#78350F;}
-.c1{background:#FEE2E2;color:#7F1D1D;}
-.c2{background:#FCE7F3;color:#831843;}
-
-/* GRAMMAR HEADING */
-.grammar-heading{
-  font-size:13.5px;font-weight:600;color:var(--primary-d);
-  margin:20px 0 10px;
-  display:flex;align-items:center;gap:9px;
-  padding:11px 16px;
-  background:var(--primary-l);
-  border-radius:var(--radius-sm);
-  border-left:3px solid var(--primary);
+/* LINK LISTS */
+.link-list{list-style:none;margin:0;padding:0;}
+.link-list li{
+  display:flex;flex-wrap:wrap;align-items:center;gap:7px;
+  padding:7px 0;border-bottom:1px solid var(--border);
+  font-size:13px;
+}
+.link-list li:last-child{border-bottom:none;}
+.link-tag{
+  padding:3px 9px;border-radius:999px;
+  font-size:10.5px;background:var(--bg-soft);color:#4B5563;
 }
 
 /* NOTES */
 .notes-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:12px;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:10px;
 }
 .note-card{
-  background:var(--bg);border-radius:var(--radius);
-  border:1px solid var(--border);padding:14px;
+  border-radius:var(--radius-md);
+  background:var(--bg-soft);
+  border:1px solid var(--border);
+  padding:10px;
 }
-.note-card h4{font-size:13px;color:var(--primary-d);margin-bottom:8px;font-weight:600;}
+.note-card h4{
+  margin:0 0 6px;
+  font-size:12.5px;color:var(--primary-strong);
+}
 .note-card textarea{
-  width:100%;min-height:90px;
-  border-radius:var(--radius-sm);border:1px solid var(--border);
-  background:#fff;font-family:'Inter',sans-serif;
-  font-size:13.5px;padding:9px;resize:vertical;outline:none;
-  color:var(--text);line-height:1.65;transition:border-color .2s;
+  width:100%;border-radius:var(--radius-sm);
+  border:1px solid var(--border);
+  min-height:90px;resize:vertical;
+  padding:7px;font-family:"DM Sans",sans-serif;
+  font-size:13px;outline:none;
 }
 .note-card textarea:focus{
   border-color:var(--primary);
-  box-shadow:0 0 0 3px rgba(55,48,163,0.08);
+  box-shadow:0 0 0 2px rgba(37,99,235,0.15);
 }
 
-/* LINK LIST */
-.link-list{list-style:none;}
-.link-list li{
-  display:flex;flex-wrap:wrap;align-items:center;gap:8px;
-  margin-bottom:8px;font-size:13.5px;
-  padding:6px 0;border-bottom:1px solid var(--border);
+/* SIMPLE TABLE */
+.table-wrap{
+  border-radius:var(--radius-md);
+  border:1px solid var(--border);
+  overflow:auto;
 }
-.link-list li:last-child{border-bottom:none;margin-bottom:0;}
-.link-list a{color:var(--primary-d);font-weight:500;}
-.link-list a:hover{color:var(--primary);}
-.link-list .tag{
-  font-size:10.5px;padding:3px 10px;border-radius:999px;
-  background:var(--primary-l);color:var(--primary-d);font-weight:500;
+table{
+  width:100%;border-collapse:collapse;
+  font-size:12.5px;
 }
-.tag-teal{background:var(--teal-l)!important;color:var(--teal)!important;}
-
-/* ACCORDION */
-.accordion{
-  border-radius:var(--radius-sm);border:1px solid var(--border);
-  background:var(--surface);padding:13px 16px;margin-bottom:9px;
-  transition:background .2s;
+th,td{padding:8px 10px;border-bottom:1px solid var(--border);text-align:left;}
+th{background:var(--bg-soft);font-weight:600;color:#111827;}
+tr:last-child td{border-bottom:none;}
+.badge{
+  display:inline-block;border-radius:999px;
+  padding:3px 9px;font-size:10.5px;font-weight:600;
 }
-.accordion summary{
-  cursor:pointer;font-weight:500;font-size:14px;
-  color:var(--ink);list-style:none;
-  display:flex;justify-content:space-between;align-items:center;
-}
-.accordion summary::after{
-  content:"›";font-size:19px;color:var(--muted);
-  display:inline-block;transition:transform .2s;
-}
-.accordion[open] summary::after{transform:rotate(90deg);}
-.accordion[open]{background:var(--primary-l);}
-
-/* EMBED */
-.embed-wrap{
-  background:var(--bg);border-radius:var(--radius);
-  border:1px dashed var(--border);overflow:hidden;min-height:80px;
-}
-.embed-panel{display:none;}
-.embed-panel.active{display:block;}
-.yt-input-area{padding:16px;display:flex;flex-direction:column;gap:10px;}
-.yt-hint{font-size:13px;color:var(--muted);}
-.yt-input-row{display:flex;gap:8px;flex-wrap:wrap;}
-.yt-input-area input[type="text"]{
-  flex:1;min-width:160px;padding:9px 13px;
-  border-radius:var(--radius-sm);border:1px solid var(--border);
-  font-size:13.5px;background:#fff;
-  font-family:'Inter',sans-serif;color:var(--text);
-}
-.yt-embed-result iframe{width:100%;height:220px;border:0;border-radius:10px;display:block;}
-.yt-change-row{
-  padding:9px 14px;display:flex;align-items:center;gap:9px;
-  border-top:1px solid var(--border);background:var(--primary-l);flex-wrap:wrap;
-}
-.yt-change-row p{font-size:12.5px;color:var(--muted);flex:1;}
-
-/* PILLS */
-.pill-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
-.pill{
-  border-radius:999px;border:1.5px solid var(--border);
-  background:var(--surface);padding:6px 15px;
-  font-size:13px;font-weight:500;cursor:pointer;color:var(--muted);
-  font-family:'Inter',sans-serif;transition:all .18s;
-}
-.pill.active,.pill:hover{
-  background:var(--primary);border-color:var(--primary);
-  color:#fff;box-shadow:0 4px 14px rgba(55,48,163,0.25);
-}
-
-/* BUTTONS */
-button.primary{
-  border-radius:999px;border:none;background:var(--primary);
-  color:#fff;padding:9px 22px;
-  font-size:13.5px;font-weight:600;cursor:pointer;
-  font-family:'Inter',sans-serif;
-  box-shadow:0 4px 14px rgba(55,48,163,0.3);
-  transition:all .2s;
-}
-button.primary:hover{background:var(--primary-d);transform:translateY(-1px);}
-button.small{
-  border-radius:8px;border:none;padding:5px 12px;
-  font-size:12.5px;cursor:pointer;
-  font-family:'Inter',sans-serif;
-  background:var(--primary-l);color:var(--primary-d);font-weight:500;
-}
-.link-btn{
-  display:inline-flex;align-items:center;gap:6px;
-  border-radius:999px;border:1px solid var(--border);
-  background:var(--surface);padding:8px 18px;
-  font-size:13px;cursor:pointer;
-  color:var(--primary-d);font-family:'Inter',sans-serif;font-weight:500;
-  text-decoration:none;transition:all .2s;
-}
-.link-btn:hover{
-  background:var(--primary-l);border-color:rgba(55,48,163,0.3);
-  text-decoration:none;transform:translateY(-1px);
-}
+.badge.pending{background:#FEF9C3;color:#713F12;}
+.badge.applied{background:#DBEAFE;color:#1D4ED8;}
+.badge.shortlisted{background:#DCFCE7;color:#166534;}
+.badge.rejected{background:#FEE2E2;color:#B91C1C;}
 
 /* FORMS */
-.form-row{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:12px;}
+.form-row{
+  display:flex;flex-wrap:wrap;gap:8px;
+  margin-bottom:10px;
+}
+.form-row input,.form-row select,.form-row button{
+  font-family:"DM Sans",sans-serif;font-size:12.5px;
+}
 input[type="text"],input[type="date"],select{
-  padding:9px 13px;border-radius:var(--radius-sm);
+  padding:7px 10px;border-radius:var(--radius-sm);
   border:1px solid var(--border);
-  font-size:13.5px;min-width:120px;background:#fff;
-  font-family:'Inter',sans-serif;color:var(--text);transition:border-color .2s;
+  background:#FFFFFF;
 }
-input:focus-visible,select:focus-visible{
+input[type="text"]:focus,
+input[type="date"]:focus,
+select:focus{
   outline:none;border-color:var(--primary);
-  box-shadow:0 0 0 3px rgba(55,48,163,0.1);
+  box-shadow:0 0 0 2px rgba(37,99,235,0.16);
+}
+button.primary{
+  border:none;border-radius:999px;
+  background:#111827;color:#F9FAFB;
+  padding:8px 14px;font-size:12.5px;font-weight:600;
+  cursor:pointer;
 }
 
-/* TABLE */
-.table-wrap{
-  overflow-x:auto;margin-top:10px;
-  border-radius:var(--radius);overflow:hidden;
-  border:1px solid var(--border);
-}
-table{width:100%;border-collapse:collapse;font-size:13.5px;}
-th,td{padding:12px 15px;border-bottom:1px solid var(--border);text-align:left;}
-th{
-  background:var(--primary-l);font-weight:600;
-  color:var(--ink);font-size:12.5px;letter-spacing:0.03em;
-}
-tr:last-child td{border-bottom:none;}
-tr:hover td{background:#F8F8FF;}
-.badge{border-radius:999px;padding:3px 10px;font-size:11.5px;font-weight:600;}
-.badge.pending{background:#FEF9C3;color:#713F12;}
-.badge.applied{background:#DBEAFE;color:#1E40AF;}
-.badge.shortlisted{background:#D1FAE5;color:#065F46;}
-.badge.rejected{background:#FEE2E2;color:#7F1D1D;}
-
-/* DEADLINES */
+/* DEADLINE CARDS */
 .deadline-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(225px,1fr));
-  gap:14px;margin-top:12px;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:10px;margin-top:6px;
 }
 .deadline-card{
-  background:#fff;border-radius:var(--radius);padding:18px;
-  box-shadow:0 4px 18px var(--shadow2);
-  border-left:4px solid var(--primary);
-  transition:transform .25s;
-}
-.deadline-card:hover{transform:translateY(-3px);}
-.deadline-title{font-size:14.5px;font-weight:600;color:var(--ink);}
-.deadline-meta{font-size:13px;color:var(--muted);margin-top:4px;}
-.deadline-status{font-size:13px;margin-top:10px;font-weight:700;}
-.deadline-status.urgent{color:#DC2626;}
-.deadline-status.soon{color:#D97706;}
-.deadline-status.safe{color:#059669;}
-
-/* TOOL CARDS */
-.tool-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(245px,1fr));
-  gap:16px;
-  .tool-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(245px,1fr));
-  gap:16px;
-}
-.tool-card{
-  background:var(--surface);border-radius:var(--radius-lg);padding:20px;
+  border-radius:var(--radius-md);
+  background:#FFFFFF;
   border:1px solid var(--border);
-  box-shadow:0 4px 20px var(--shadow2);
-  display:flex;flex-direction:column;gap:8px;
-  transition:all .28s cubic-bezier(0.16,1,0.3,1);
+  padding:10px 10px 8px;
+  box-shadow:0 2px 8px rgba(15,23,42,0.06);
 }
-.tool-card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 18px 44px rgba(55,48,163,0.1);
-  border-color:rgba(55,48,163,0.2);
-}
-.tool-card h4{font-size:15px;font-weight:600;color:var(--ink);}
-.tool-card p{font-size:13.5px;color:var(--muted);flex:1;line-height:1.65;}
-.open-btn{
-  display:inline-flex;align-items:center;gap:6px;
-  border-radius:999px;padding:9px 18px;
-  font-size:13px;font-weight:600;color:#fff;
-  text-decoration:none;border:none;cursor:pointer;
-  font-family:'Inter',sans-serif;
-  transition:all .2s;align-self:flex-start;
-  position:relative;overflow:hidden;
-}
-.open-btn::after{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);
-  transform:translateX(-100%);transition:transform .5s;
-}
-.open-btn:hover::after{transform:translateX(100%);}
-.open-btn:hover{opacity:.9;transform:translateY(-2px);text-decoration:none;}
-.ob-p{background:linear-gradient(135deg,var(--primary),#6366F1);}
-.ob-t{background:linear-gradient(135deg,var(--teal),#0D9488);}
-.ob-c{background:linear-gradient(135deg,var(--coral),#EA580C);}
-.ob-m{background:linear-gradient(135deg,var(--accent),#B45309);}
-
-/* PROGRESS BAR */
-.progress-bar-wrap{margin:8px 0 4px;}
-.progress-label{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:5px;}
-.progress-bar{height:7px;background:var(--border);border-radius:999px;overflow:hidden;}
-.progress-fill{
-  height:100%;border-radius:999px;
-  background:linear-gradient(90deg,var(--primary),#818CF8);
-  transition:width 1.2s cubic-bezier(0.16,1,0.3,1);
-  width:0%;
-}
+.deadline-title{font-size:13.5px;font-weight:600;color:#111827;}
+.deadline-meta{font-size:12px;color:var(--muted);}
+.deadline-status{margin-top:6px;font-size:12px;font-weight:600;}
+.deadline-status.urgent{color:#B91C1C;}
+.deadline-status.soon{color:#B45309;}
+.deadline-status.safe{color:#15803D;}
 
 /* FOOTER */
-.footer{
-  text-align:center;font-size:13px;color:var(--muted);
-  padding:18px 8px 28px;
-  border-top:1px solid var(--border);margin-top:32px;
-  line-height:1.8;
+footer{
+  border-top:1px solid var(--border);
+  padding:14px 0 22px;margin-top:10px;
 }
-.footer b{color:var(--primary-d);}
+footer .inner{
+  max-width:1120px;margin:0 auto;
+  padding:0 18px;font-size:12px;color:var(--muted);
+  display:flex;flex-wrap:wrap;gap:4px;justify-content:space-between;
+}
 
-/* COUNTER ANIMATION */
-.count-up{display:inline-block;}
-
-/* ══════════════════════════════════════
-   RESPONSIVE — FULL MOBILE FIX
-══════════════════════════════════════ */
-
-@media(max-width:960px){
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;}
+  .hero-side{order:-1;}
   .two-col{grid-template-columns:1fr;}
-  .hero-wrap{grid-template-columns:1fr;}
-  .hero-side{display:none;}
 }
-
-@media(max-width:680px){
-
-  /* TOPBAR */
-  .topbar{padding:10px 12px;gap:8px;}
-  .brand-text h1{font-size:17px;}
-  .brand-text p{display:none;}
-  .brand-icon{width:34px;height:34px;font-size:17px;}
-  .tabs{
-    overflow-x:auto;flex-wrap:nowrap;
-    padding-bottom:4px;width:100%;
-    scrollbar-width:none;-ms-overflow-style:none;
-  }
-  .tabs::-webkit-scrollbar{display:none;}
-  .tab{padding:6px 12px;font-size:12px;flex-shrink:0;}
-
-  /* CONTENT */
-  .content{padding:14px 10px 50px;}
-
-  /* HERO */
-  .hero-main{padding:24px 18px;}
-  .hero-main h2{font-size:24px;}
-  .hero-main>p{font-size:13.5px;}
-  .hero-chips{gap:6px;}
-  .hero-chip{font-size:11.5px;padding:4px 10px;}
-  .hero-btns{gap:8px;}
-  .btn-hero{padding:10px 18px;font-size:13px;}
-  .hero-stats{gap:12px;font-size:12px;}
-  .hero-kicker{font-size:10px;}
-
-  /* STATS BAR */
-  .stats-bar{display:none;}
-
-  /* SECTION TITLES */
+@media(max-width:720px){
+  .content{padding:18px 12px 48px;}
+  .hero-main{padding:18px 14px 16px;}
+  .hero-main h2{font-size:22px;}
+  .hero-text{font-size:12.5px;}
+  .hero-chip{font-size:11px;padding:3px 8px;}
+  .btn-primary,.btn-ghost{font-size:12px;padding:7px 13px;}
   .section-title{font-size:22px;}
-  .section-sub{font-size:13px;}
-
-  /* CARDS */
-  .card{padding:16px 14px;}
-  .card h3{font-size:17px;}
-  .card .hint{font-size:12.5px;}
-
-  /* NAV GRID */
-  .nav-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
-  .nav-card{padding:16px 13px;}
-  .nav-card .icon{font-size:22px;margin-bottom:8px;}
-  .nav-card h3{font-size:13px;}
-  .nav-card p{font-size:11.5px;}
-
-  /* RESOURCE CARDS */
-  .r-grid{grid-template-columns:1fr;}
-  .r-card{padding:15px 13px;}
-  .r-title{font-size:13.5px;}
-  .r-sub{font-size:12.5px;}
-  .r-btn{font-size:11.5px;padding:6px 12px;}
-  .r-section{padding:12px 14px;}
-  .r-section h4{font-size:16px;}
-
-  /* GRAMMAR HEADINGS */
-  .grammar-heading{font-size:12.5px;padding:10px 13px;}
-
-  /* NOTES GRID */
-  .notes-grid{grid-template-columns:1fr;}
-  .note-card textarea{min-height:80px;font-size:13px;}
-
-  /* LINK LIST */
-  .link-list li{font-size:13px;}
-
-  /* TABLES */
-  .table-wrap{border-radius:10px;}
-  table{font-size:12.5px;}
-  th,td{padding:9px 10px;}
-
-  /* DEADLINE CARDS */
-  .deadline-grid{grid-template-columns:1fr;}
-  .deadline-title{font-size:13.5px;}
-
-  /* TOOL GRID */
-  .tool-grid{grid-template-columns:1fr;}
-  .tool-card{padding:16px;}
-  .tool-card h4{font-size:14px;}
-  .tool-card p{font-size:13px;}
-
-  /* FORMS */
-  .form-row{flex-direction:column;gap:8px;}
-  .form-row input,.form-row select,.form-row button{width:100%;min-width:unset;}
-  input[type="text"],input[type="date"],select{font-size:14px;padding:10px 12px;}
-
-  /* PILLS */
-  .pill-row{overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px;scrollbar-width:none;}
-  .pill-row::-webkit-scrollbar{display:none;}
-  .pill{flex-shrink:0;font-size:12.5px;}
-
-  /* BUTTONS */
-  .link-btn{font-size:12.5px;padding:8px 14px;}
-  button.primary{font-size:13.5px;padding:10px 18px;width:100%;}
-  .open-btn{font-size:12.5px;padding:8px 16px;}
-
-  /* ACCORDION */
-  .accordion summary{font-size:13px;}
-
-  /* FOOTER */
-  .footer{font-size:12px;padding:14px 10px 24px;}
-
-  /* HERO ORB — hide on mobile for performance */
-  .hero-orb1,.hero-orb2{display:none;}
+  .section-sub{font-size:12.5px;}
+  .card{border-radius:18px;}
 }
-
-@media(max-width:400px){
-  .nav-grid{grid-template-columns:1fr;}
-  .hero-main h2{font-size:21px;}
-  .tab{font-size:11px;padding:5px 10px;}
-  .brand-text h1{font-size:15px;}
+@media(max-width:480px){
+  .topbar-inner{flex-direction:column;align-items:flex-start;gap:6px;}
+  .logo-text p{display:none;}
+  .hero-actions{flex-direction:column;align-items:flex-start;}
+  .stats-belt{flex-direction:column;}
+  .stats-pill{flex:0 0 auto;}
   .r-btns{flex-direction:column;}
-  .r-btn{width:100%;text-align:center;}
+  .r-btn{width:100%;}
+  .form-row{flex-direction:column;}
+  .form-row input,.form-row select,.form-row button{width:100%;}
 }
 </style>
 </head>
 <body>
 
-<!-- TOPBAR -->
 <header class="topbar">
-  <div class="brand">
-    <div class="brand-icon">📚</div>
-    <div class="brand-text">
-      <h1>Lit Hub</h1>
-      <p>Curated by Deepshikha · MA English · German · PhD</p>
+  <div class="topbar-inner">
+    <div class="logo-wrap">
+      <div class="logo-mark">
+        <div class="logo-mark-inner"><span>LH</span></div>
+      </div>
+      <div class="logo-text">
+        <h1>Lit Hub</h1>
+        <p>Deepshikha · MA English · German · PhD</p>
+      </div>
     </div>
+    <nav class="tabs" id="main-tabs" aria-label="Main navigation">
+      <button class="tab active" data-tab="home"><span class="tab-icon">◎</span>Home</button>
+      <button class="tab" data-tab="lit-hub"><span class="tab-icon">📚</span>Lit Hub</button>
+      <button class="tab" data-tab="german"><span class="tab-icon">DE</span>German</button>
+      <button class="tab" data-tab="phd"><span class="tab-icon">PhD</span>PhD</button>
+      <button class="tab" data-tab="tools"><span class="tab-icon">AI</span>Tools</button>
+      <button class="tab" data-tab="calendar"><span class="tab-icon">◎</span>Calendar</button>
+    </nav>
   </div>
-  <nav class="tabs" id="main-tabs" aria-label="Navigation">
-    <button class="tab active" data-tab="home">✨ Home</button>
-    <button class="tab" data-tab="lit-hub">📖 Lit Hub</button>
-    <button class="tab" data-tab="german">🇩🇪 German</button>
-    <button class="tab" data-tab="phd">🎓 PhD</button>
-    <button class="tab" data-tab="tools">🧠 Research</button>
-    <button class="tab" data-tab="calendar">📅 Calendar</button>
-  </nav>
 </header>
 
 <main class="content">
 
-<!-- ═══ HOME ═══ -->
+<!-- HOME -->
 <section id="home" class="tab-page active">
-
-  <div class="hero-wrap">
-    <div class="hero-main">
-      <div class="hero-orb1"></div>
-      <div class="hero-orb2"></div>
-      <div class="hero-kicker"><span class="dot"></span> Personal Study Console · 2026</div>
-      <h2>One hub for <em>Lit · German · PhD</em></h2>
-      <p>Your complete academic workspace — playlists, Drive books, proposal drafts, application tracker and deadline manager all in one place.</p>
+  <div class="hero-grid">
+    <section class="hero-main">
+      <div class="hero-label-row">
+        <div class="hero-kicker">
+          <span class="hero-kicker-dot"></span>
+          STUDY CONSOLE · 2026
+        </div>
+        <span class="hero-tag-soft">Private · Local · Distraction‑free</span>
+      </div>
+      <h2>One hub for <em>Literature · German · PhD</em></h2>
+      <p class="hero-text">
+        Curated playlists, MA books, German A1–C2 and PhD applications in one quiet page that works on your phone, tablet and laptop.
+      </p>
       <div class="hero-chips">
-        <span class="hero-chip">📚 MA English Literature</span>
-        <span class="hero-chip">🇩🇪 German A1 → C2</span>
-        <span class="hero-chip">🎓 PhD Applications 2026</span>
-        <span class="hero-chip">📽️ Archival &amp; Documentary Research</span>
+        <span class="hero-chip">MA English · DU</span>
+        <span class="hero-chip">German A1 → C2</span>
+        <span class="hero-chip">PhD 2026 cycle</span>
+        <span class="hero-chip">Archival &amp; documentary research</span>
       </div>
-      <div class="hero-btns">
-        <button class="btn-hero" data-jump="lit-hub">Open Lit Hub →</button>
-        <button class="btn-hero outline" data-jump="german">🇩🇪 German Hub</button>
-        <button class="btn-hero outline" data-jump="phd">🎓 PhD Prep</button>
+      <div class="hero-actions">
+        <button class="btn-primary" data-jump="lit-hub">Open Literature Hub →</button>
+        <button class="btn-ghost" data-jump="german">German Hub</button>
+        <button class="btn-ghost" data-jump="phd">PhD Workspace</button>
       </div>
-      <div class="hero-stats">
-        <span>💾 <b>Auto-saved</b> notes</span>
-        <span>📱 <b>Mobile ready</b></span>
-        <span>🔒 <b>No login</b> needed</span>
+      <div class="hero-stat-row">
+        <span>✓ Notes saved only in this browser</span>
+        <span>✓ No logins, no ads, no trackers</span>
+        <span>✓ Works offline once loaded</span>
       </div>
-    </div>
+    </section>
+
     <aside class="hero-side">
-      <h4>Today's Focus Mode</h4>
-      <p style="font-size:12.5px;color:var(--muted);">Tap a mode to jump directly there.</p>
+      <h4>Today’s focus</h4>
+      <p>Tap a mode to jump straight to that section.</p>
       <div class="mode-grid">
         <div class="mode-card" data-jump="lit-hub">
-          <span class="m-badge">Lit Mode</span>
-          <b>Literature Hub</b>
-          <small>YouTube playlists, PYQs, theory, film studies.</small>
+          <div class="mode-badge"><span class="mode-icon-dot"></span>Lit</div>
+          <b>MA Literature Hub</b>
+          <small>Books, PYQs, playlists, theory &amp; film.</small>
         </div>
         <div class="mode-card" data-jump="german">
-          <span class="m-badge">German Mode</span>
-          <b>German A1→C2</b>
-          <small>Grammar, podcasts, songs, notes.</small>
+          <div class="mode-badge"><span class="mode-icon-dot"></span>DE</div>
+          <b>German A1–C2</b>
+          <small>Courses, podcasts, songs, notes.</small>
         </div>
         <div class="mode-card" data-jump="phd">
-          <span class="m-badge">PhD Mode</span>
+          <div class="mode-badge"><span class="mode-icon-dot"></span>PhD</div>
           <b>Applications</b>
-          <small>Tracker, deadlines, proposal drafts.</small>
+          <small>Tracker, deadlines, drafts.</small>
         </div>
         <div class="mode-card" data-jump="tools">
-          <span class="m-badge">Research Mode</span>
-          <b>AI &amp; Tools</b>
-          <small>ResearchRabbit, Zotero, JSTOR.</small>
+          <div class="mode-badge"><span class="mode-icon-dot"></span>AI</div>
+          <b>Research stack</b>
+          <small>Discovery, citations, archives.</small>
         </div>
       </div>
     </aside>
   </div>
 
-  <!-- STATS BAR -->
-  <div class="stats-bar reveal">
-    <div class="stat-item">
-      <span class="stat-num count-up" data-target="120">0</span>
-      <span class="stat-label">YouTube Resources</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num count-up" data-target="6">0</span>
-      <span class="stat-label">CEFR Levels (German)</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num count-up" data-target="8">0</span>
-      <span class="stat-label">PhD Applications</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num count-up" data-target="5">0</span>
-      <span class="stat-label">Literature Papers</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num count-up" data-target="100">0</span>
-      <span class="stat-label">% Auto-saved Notes</span>
-    </div>
-  </div>
-
-  <div class="nav-grid">
-    <article class="nav-card reveal reveal-d1" data-jump="lit-hub">
-      <div class="icon">📚</div>
-      <h3>Lit Resource Hub</h3>
-      <p>Drive books, playlists, PYQs, YouTube master resource.</p>
-      <span class="nc-badge">MA Coursework</span>
-    </article>
-    <article class="nav-card reveal reveal-d2" data-jump="german">
-      <div class="icon">🇩🇪</div>
-      <h3>German Hub</h3>
-      <p>A1→C2 structured courses, grammar, vocab, auto-saved notes.</p>
-      <span class="nc-badge">A1 → C2</span>
-    </article>
-    <article class="nav-card reveal reveal-d3" data-jump="phd">
-      <div class="icon">🎓</div>
-      <h3>PhD Prep</h3>
-      <p>Application tracker, deadline manager, proposal notes.</p>
-      <span class="nc-badge">2026 Cycle</span>
-    </article>
-    <article class="nav-card reveal reveal-d4" data-jump="tools">
-      <div class="icon">🧠</div>
-      <h3>Research &amp; AI Tools</h3>
-      <p>Connected Papers, Semantic Scholar, Zotero, CORE.</p>
-      <span class="nc-badge">AI-powered</span>
-    </article>
-    <article class="nav-card reveal reveal-d1" data-jump="calendar">
-      <div class="icon">📅</div>
-      <h3>Calendar &amp; Deadlines</h3>
-      <p>Google Calendar + deadline tracker with urgency alerts.</p>
-      <span class="nc-badge">Deadlines</span>
-    </article>
-    <article class="nav-card reveal reveal-d2" onclick="window.open('https://docs.new','_blank')">
-      <div class="icon">✏️</div>
-      <h3>New Notes Doc</h3>
-      <p>Opens a blank Google Doc instantly.</p>
-      <span class="nc-badge">Google Docs</span>
-    </article>
+  <div class="stats-belt">
+    <div class="stats-pill"><span>YouTube courses</span><span>30+ curated</span></div>
+    <div class="stats-pill"><span>German path</span><span>A1–C2</span></div>
+    <div class="stats-pill"><span>PhD view</span><span>tracker + notes</span></div>
+    <div class="stats-pill"><span>Storage</span><span>local only</span></div>
   </div>
 </section>
-<!-- END HOME -->
 
-<!-- ═══ LIT HUB ═══ -->
+<!-- LIT HUB -->
 <section id="lit-hub" class="tab-page">
-  <h2 class="section-title">MA Literature Resource Hub</h2>
-  <p class="section-sub">Drive books · Paper-wise playlists · PYQs · Full YouTube master resource for literature &amp; humanities.</p>
+  <h2 class="section-title">Literature Resource Hub</h2>
+  <p class="section-sub">
+    MA English books, paper‑wise playlists and a verified YouTube list for theory, postcolonial studies, film and cultural analysis.
+  </p>
 
   <div class="two-col">
     <div class="stack">
-      <section class="card reveal">
-        <h3>Books &amp; PDFs — Google Drive</h3>
-        <p class="hint">Your MA Literature books folder. Browse and open files directly below.</p>
-        <div style="border-radius:12px;overflow:hidden;border:1px solid var(--border);">
-          <iframe src="https://drive.google.com/embeddedfolderview?id=1-f4TG5vzfwZ80G-3rOIKHqrlsrdm5a2Z#grid"
-            style="width:100%;height:230px;border:0;display:block;" loading="lazy"></iframe>
+      <section class="card">
+        <h3>Books &amp; PDFs (Google Drive)</h3>
+        <p class="hint">Your MA Literature books folder, embedded directly here.</p>
+        <div style="border-radius:14px;overflow:hidden;border:1px solid var(--border);background:#FAFAFA;">
+          <iframe
+            src="https://drive.google.com/embeddedfolderview?id=1-f4TG5vzfwZ80G-3rOIKHqrlsrdm5a2Z#grid"
+            style="width:100%;height:230px;border:0;display:block;"
+            loading="lazy"></iframe>
         </div>
-        <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px;">
-          <a href="https://drive.google.com/drive/folders/1-f4TG5vzfwZ80G-3rOIKHqrlsrdm5a2Z" class="link-btn">📂 Open in Drive ↗</a>
-          <a href="https://docs.new" class="link-btn">✏️ New Notes Doc</a>
-        </div>
-      </section>
-
-      <section class="card reveal">
-        <h3>Paper-wise Video Playlists</h3>
-        <p class="hint">Paste any YouTube playlist URL to embed it. Auto-saved in your browser.</p>
-        <div class="pill-row" id="ma-pills">
-          <button class="pill active" data-target="ma-british">British Lit</button>
-          <button class="pill" data-target="ma-theory">Theory</button>
-          <button class="pill" data-target="ma-postcolonial">Postcolonial</button>
-          <button class="pill" data-target="ma-cultural">Cultural Studies</button>
-          <button class="pill" data-target="ma-american">American</button>
-        </div>
-        <div class="embed-wrap">
-          <div class="embed-panel active" id="ma-british" data-ytkey="yt_ma_british"></div>
-          <div class="embed-panel" id="ma-theory" data-ytkey="yt_ma_theory"></div>
-          <div class="embed-panel" id="ma-postcolonial" data-ytkey="yt_ma_postcolonial"></div>
-          <div class="embed-panel" id="ma-cultural" data-ytkey="yt_ma_cultural"></div>
-          <div class="embed-panel" id="ma-american" data-ytkey="yt_ma_american"></div>
+        <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:8px;">
+          <a class="r-btn rb-main" href="https://drive.google.com/drive/folders/1-f4TG5vzfwZ80G-3rOIKHqrlsrdm5a2Z">Open full Drive ↗</a>
+          <a class="r-btn rb-soft" href="https://docs.new">New notes doc</a>
         </div>
       </section>
-    </div>
 
-    <div class="stack">
-      <section class="card reveal">
-        <h3>PYQs &amp; Course Documents</h3>
-        <p class="hint">Click to expand each paper. Replace Drive links with your own.</p>
-        <details class="accordion" open>
-          <summary>Paper 1 — British Literature</summary>
-          <ul class="link-list" style="margin-top:10px;">
-            <li><a href="https://drive.google.com/drive/folders/1-f4TG5vzfwZ80G-3rOIKHqrlsrdm5a2Z">PYQ 2024 ↗</a><span class="tag">Drive</span></li>
-            <li><a href="https://drive.google.com/drive/folders/1-f4TG5vzfwZ80G-3rOIKHqrlsrdm5a2Z">PYQ 2023 ↗</a><span class="tag">Drive</span></li>
-            <li><a href="https://drive.google.com/drive/folders/1-f4TG5vzfwZ80G-3rOIKHqrlsrdm5a2Z">PYQ 2022 ↗</a><span class="tag">Drive</span></li>
-          </ul>
-        </details>
-        <details class="accordion">
-          <summary>Paper 2 — Literary Theory</summary>
-          <ul class="link-list" style="margin-top:10px;">
-            <li><a href="https://drive.google.com/drive/folders/1-f4TG5vzfwZ80G-3rOIKHqrlsrdm5a2Z">PYQ 2024 ↗</a><span class="tag">Drive</span></li>
-            <li><a href="https://drive.google.com/drive/folders/1-f4TG5vzfwZ80G-3rOIKHqrlsrdm5a2Z">PYQ 2023 ↗</a><span class="tag">Drive</span></li>
-          </ul>
-        </details>
-        <details class="accordion">
-          <summary>Paper 3 — Postcolonial Studies</summary>
-          <ul class="link-list" style="margin-top:10px;">
-            <li><a href="https://drive.google.com/drive/folders/1-f4TG5vzfwZ80G-3rOIKHqrlsrdm5a2Z">PYQ 2024 ↗</a><span class="tag">Drive</span></li>
-            <li><a href="https://drive.google.com/drive/folders/1-f4TG5vzfwZ80G-3rOIKHqrlsrdm5a2Z">PYQ 2023 ↗</a><span class="tag">Drive</span></li>
-          </ul>
-        </details>
-        <details class="accordion">
-          <summary>Paper 4 — Cultural Studies</summary>
-          <ul class="link-list" style="margin-top:10px;">
-            <li><a href="https://drive.google.com/drive/folders/1-f4TG5vzfwZ80G-3rOIKHqrlsrdm5a2Z">PYQ 2024 ↗</a><span class="tag">Drive</span></li>
-          </ul>
-        </details>
-        <details class="accordion">
-          <summary>Paper 5 — American Literature</summary>
-          <ul class="link-list" style="margin-top:10px;">
-            <li><a href="https://drive.google.com/drive/folders/1-f4TG5vzfwZ80G-3rOIKHqrlsrdm5a2Z">PYQ 2024 ↗</a><span class="tag">Drive</span></li>
-          </ul>
-        </details>
-        <details class="accordion">
-          <summary>Syllabus &amp; Reading Lists</summary>
-          <ul class="link-list" style="margin-top:10px;">
-            <li><a href="https://drive.google.com/drive/folders/1-f4TG5vzfwZ80G-3rOIKHqrlsrdm5a2Z">MA Syllabus ↗</a><span class="tag">Drive</span></li>
-            <li><a href="https://drive.google.com/drive/folders/1-f4TG5vzfwZ80G-3rOIKHqrlsrdm5a2Z">Reading Lists ↗</a><span class="tag">Drive</span></li>
-          </ul>
-        </details>
-      </section>
-
-      <section class="card reveal">
-        <h3>Free Text Archives</h3>
-        <p class="hint">Open-access literature, criticism and journals.</p>
-        <ul class="link-list">
-          <li><a href="https://www.gutenberg.org">Project Gutenberg ↗</a><span class="tag">70,000+ classics</span></li>
-          <li><a href="https://archive.org">Internet Archive ↗</a><span class="tag">Books &amp; Journals</span></li>
-          <li><a href="https://www.jstor.org">JSTOR ↗</a><span class="tag">100 free/month</span></li>
-          <li><a href="https://www.luminarium.org">Luminarium ↗</a><span class="tag">Medieval–18th C</span></li>
-          <li><a href="https://openlibrary.org">Open Library ↗</a><span class="tag">Borrowable</span></li>
-          <li><a href="https://www.marxists.org/archive/index.htm">Marxists Archive ↗</a><span class="tag">Theory</span></li>
-          <li><a href="https://www.bartleby.com">Bartleby ↗</a><span class="tag">Anthologies</span></li>
-          <li><a href="https://www.poetryfoundation.org">Poetry Foundation ↗</a><span class="tag">Poetry &amp; Audio</span></li>
-        </ul>
-      </section>
-    </div>
-  </div>
-
-  <hr class="divider"/>
-  <h2 class="section-title">📺 Literature &amp; Humanities YouTube Master Resource</h2>
-  <p class="section-sub">Yale · MIT · NPTEL · IIT · Video Essayists · Film Studies · Philosophy · Linguistics. All links verified. Curated by D K Nishad.</p>
-
-  <!-- COURSE HERO -->
-  <div class="r-section reveal"><span>🎥</span><h4>Course Hero</h4></div>
-  <p class="r-desc">500+ literary works: Hamlet, Beloved, Things Fall Apart, Wuthering Heights, Canterbury Tales and more.</p>
-  <div class="r-grid">
-    <div class="r-card reveal">
-      <div class="r-tag rt-p">Channel</div>
-      <div class="r-title">Course Hero — Main Channel + All Playlists</div>
-      <div class="r-sub">Each major text has its own sub-playlist with summary and analysis videos. Best rapid-revision tool for MA exams.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/@coursehero" class="r-btn rb-p">Open Channel ↗</a>
-        <a href="https://www.youtube.com/@coursehero/playlists" class="r-btn rb-t">All Playlists ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- YALE -->
-  <div class="r-section reveal"><span>🏛️</span><h4>Yale Open Courses</h4></div>
-  <p class="r-desc">Full semester courses by Yale faculty — free with transcripts, syllabi and reading lists.</p>
-  <div class="r-grid">
-    <div class="r-card reveal reveal-d1">
-      <div class="r-tag rt-p">Theory — ENGL 300 ✅ Verified</div>
-      <div class="r-title">Introduction to Theory of Literature — Prof. Paul H. Fry</div>
-      <div class="r-sub">26 lectures. Structuralism, Deconstruction, Psychoanalysis, Marxism, New Historicism, Feminist Theory, Ecocriticism. The most essential free theory course online.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/playlist?list=PLD00D35CBC75941BD" class="r-btn rb-p">Open Playlist ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d2">
-      <div class="r-tag rt-t">American Lit ✅ Verified</div>
-      <div class="r-title">The American Novel Since 1945 — Prof. Amy Hungerford</div>
-      <div class="r-sub">Wright, Nabokov, O'Connor, Kerouac, Pynchon, Morrison, DeLillo — 25 lectures on postwar American fiction.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/playlist?list=PLE33BCD966FF96F23" class="r-btn rb-p">Open Playlist ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d3">
-      <div class="r-tag rt-m">Full Channel</div>
-      <div class="r-title">YaleCourses — All Literature Playlists</div>
-      <div class="r-sub">Modern Poetry, Milton, Dante in Translation, Hemingway/Fitzgerald/Faulkner, The Ancient Greeks — all free with syllabi.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/@yalecourses" class="r-btn rb-p">Channel ↗</a>
-        <a href="https://oyc.yale.edu/courses" class="r-btn rb-t">Course Portal ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- NPTEL / IIT -->
-  <div class="r-section reveal"><span>🎓</span><h4>NPTEL / IIT University Courses</h4></div>
-  <p class="r-desc">Full IIT-level courses on theory, postcolonial studies, feminism and cultural studies. Essential for Indian PhD and UGC NET prep.</p>
-  <div class="r-grid">
-    <div class="r-card reveal reveal-d1">
-      <div class="r-tag rt-p">IIT Madras</div>
-      <div class="r-title">Literary Criticism: From Plato to Leavis</div>
-      <div class="r-sub">Sidney, Dryden, Pope, Johnson, Wordsworth, Coleridge, Arnold, Eliot, Leavis — classical to modern critical tradition.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/watch?v=cdmYrCTE-Vw" class="r-btn rb-p">Start Here ↗</a>
-        <a href="https://www.youtube.com/@npteliitm" class="r-btn rb-t">NPTEL Channel ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d2">
-      <div class="r-tag rt-t">IIT Kanpur ✅ Verified</div>
-      <div class="r-title">Postcolonial Literature — Dr. Sayan Chattopadhyay</div>
-      <div class="r-sub">Said's Orientalism, Bhabha's hybridity and mimicry, Spivak, negritude, Commonwealth literature. Most comprehensive Indian university postcolonial course.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/playlist?list=PL0BZ98iyy85PcM7PI-g9EzU1bjvcdVWWG" class="r-btn rb-p">Open Playlist ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d3">
-      <div class="r-tag rt-c">NPTEL IIT Kanpur</div>
-      <div class="r-title">Feminism and Literature — NPTEL</div>
-      <div class="r-sub">Wollstonecraft, Virginia Woolf, gynocriticism, écriture féminine, second and third wave feminism.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/watch?v=Y5xqDSy161E" class="r-btn rb-p">Start Here ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d4">
-      <div class="r-tag rt-m">NPTEL</div>
-      <div class="r-title">New Historicism and Cultural Studies — NPTEL</div>
-      <div class="r-sub">Foucault, Greenblatt and Cultural Materialism. Part of a broader theory series covering all major schools.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/watch?v=iG9f4YUsyNk" class="r-btn rb-p">Open Lecture ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- MIT -->
-  <div class="r-section reveal"><span>⚗️</span><h4>MIT OpenCourseWare</h4></div>
-  <p class="r-desc">Free MIT lecture archive covering Linguistics, Old English and Tragedy.</p>
-  <div class="r-grid">
-    <div class="r-card reveal reveal-d1">
-      <div class="r-tag rt-p">MIT Full Course ✅</div>
-      <div class="r-title">MIT 24.900 — Introduction to Linguistics</div>
-      <div class="r-sub">Phonetics, phonology, morphology, syntax, semantics — 20+ full MIT lectures. Best structured linguistics course freely available.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/playlist?list=PLUl4u3cNGP63BZGNOqrF2qf_yxOjuG35j" class="r-btn rb-p">Open Playlist ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d2">
-      <div class="r-tag rt-t">MIT OCW</div>
-      <div class="r-title">Old English and Beowulf — MIT OCW</div>
-      <div class="r-sub">Full lecture series on Old English language and Beowulf as both linguistic and literary text.</div>
-      <div class="r-btns">
-        <a href="https://ocw.mit.edu/courses/21l-601j-old-english-and-beowulf-spring-2023/video_galleries/lecture-videos/" class="r-btn rb-p">Open Lectures ↗</a>
-        <a href="https://www.youtube.com/@mitocw" class="r-btn rb-t">MIT YouTube ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d3">
-      <div class="r-tag rt-c">MIT OCW</div>
-      <div class="r-title">Tragedy — MIT OCW</div>
-      <div class="r-sub">Genre of tragedy from Greek drama to modern. Aeschylus, Sophocles, Shakespeare, Arthur Miller.</div>
-      <div class="r-btns">
-        <a href="https://ocw.mit.edu/courses/21l-422-tragedy-fall-2002/" class="r-btn rb-p">Open Course ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- POSTCOLONIAL -->
-  <div class="r-section reveal"><span>🌍</span><h4>Postcolonial Studies</h4></div>
-  <p class="r-desc">Said, Bhabha, Spivak, Fanon, negritude, diaspora, resistance literature and Commonwealth fiction.</p>
-  <div class="r-grid">
-    <div class="r-card reveal reveal-d1">
-      <div class="r-tag rt-p">IIT Kanpur ✅</div>
-      <div class="r-title">Postcolonial Literature — IIT Kanpur Full Course</div>
-      <div class="r-sub">Most comprehensive Indian university postcolonial course. Covers all major theorists and literary texts.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/playlist?list=PL0BZ98iyy85PcM7PI-g9EzU1bjvcdVWWG" class="r-btn rb-p">Open Playlist ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d2">
-      <div class="r-tag rt-t">UGC NET</div>
-      <div class="r-title">UGC NET Postcolonial Literature Lecture Series</div>
-      <div class="r-sub">Commonwealth lit, hybridism, diaspora and resistance literature in full.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/playlist?list=PL5B4lsKp6FVzbHvjVh2D4DnexggVxCTeg" class="r-btn rb-p">Open Playlist ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d3">
-      <div class="r-tag rt-m">NPTEL ✅</div>
-      <div class="r-title">Postcolonial Theory I — Edward Said (IIT Kanpur NPTEL)</div>
-      <div class="r-sub">Dedicated lecture on Orientalism, discourse and Said's foundational contribution to postcolonial thought.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/watch?v=7w_KOZdeWe4" class="r-btn rb-p">Open Lecture ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- CULTURAL STUDIES -->
-  <div class="r-section reveal"><span>🌐</span><h4>Cultural Studies</h4></div>
-  <p class="r-desc">Stuart Hall, Raymond Williams, Gramsci, Birmingham School, hegemony, ideology and representation theory.</p>
-  <div class="r-grid">
-    <div class="r-card reveal reveal-d1">
-      <div class="r-tag rt-p">Complete Series</div>
-      <div class="r-title">Complete Cultural Studies — Full YouTube Playlist</div>
-      <div class="r-sub">Hall's encoding/decoding, Williams's structures of feeling, Gramsci's hegemony, Althusser's ISAs — all in one playlist.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/playlist?list=PLM9v6i0jRPqY7d1G_sbz9o51lVWoHrlGz" class="r-btn rb-p">Open Playlist ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d2">
-      <div class="r-tag rt-t">Overview</div>
-      <div class="r-title">Cultural Studies — Best Introduction for Students</div>
-      <div class="r-sub">Broad overview covering all major figures and concepts. Popular among MA and UGC NET students.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/watch?v=UJ9MtvuaGbE" class="r-btn rb-p">Open Lecture ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- GENDER / FEMINIST -->
-  <div class="r-section reveal"><span>♀️</span><h4>Gender Studies &amp; Feminist Theory</h4></div>
-  <p class="r-desc">Wollstonecraft, Woolf, Beauvoir, Showalter, Kristeva, Butler, queer theory, intersectionality.</p>
-  <div class="r-grid">
-    <div class="r-card reveal reveal-d1">
-      <div class="r-tag rt-p">Theory</div>
-      <div class="r-title">Feminism &amp; Gender Studies — Introduction Lecture</div>
-      <div class="r-sub">Gynocriticism, écriture féminine, Kristeva, Irigaray, Cixous, queer theory — part of a full theory lecture series.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/watch?v=3eY1WU-kjBY" class="r-btn rb-p">Open Lecture ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d2">
-      <div class="r-tag rt-t">UGC NET</div>
-      <div class="r-title">Introduction to Gender Studies — UGC NET English</div>
-      <div class="r-sub">4 waves of feminism, Showalter, Gilbert &amp; Gubar, bell hooks, black feminism, postcolonial feminism.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/watch?v=rEg3s3o40bo" class="r-btn rb-p">Open Lecture ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d3">
-      <div class="r-tag rt-m">Channel</div>
-      <div class="r-title">Philosophy Tube — Gender, Identity &amp; Critical Theory</div>
-      <div class="r-sub">Long-form essays on gender theory, identity and politics from a rigorous academic perspective.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/@PhilosophyTube" class="r-btn rb-p">Open Channel ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- VIDEO ESSAYISTS -->
-  <div class="r-section reveal"><span>✍️</span><h4>Video Essayists</h4></div>
-  <p class="r-desc">The best long-form analytical YouTube essayists covering literature, media, ideology and cultural criticism.</p>
-  <div class="r-grid">
-    <div class="r-card reveal reveal-d1">
-      <div class="r-tag rt-p">Film &amp; Lit</div>
-      <div class="r-title">Nerdwriter1 — Evan Puschak</div>
-      <div class="r-sub">Wide-ranging essays on art, poetry, film, music, politics and philosophy. Dense, beautifully edited.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/@Nerdwriter1" class="r-btn rb-p">Open Channel ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d2">
-      <div class="r-tag rt-c">Cultural Critique</div>
-      <div class="r-title">ContraPoints — Natalie Wynn</div>
-      <div class="r-sub">Long-form essays on gender theory, ideology, aesthetics, leftist philosophy and cultural critique. Deeply researched.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/@ContraPoints" class="r-btn rb-p">Open Channel ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d3">
-      <div class="r-tag rt-t">Media Analysis</div>
-      <div class="r-title">Lindsay Ellis</div>
-      <div class="r-sub">Feminist media criticism, adaptation studies, fandom, Disney and film-literature connections. Rigorously academic.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/@LindsayEllis" class="r-btn rb-p">Open Channel ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d4">
-      <div class="r-tag rt-m">Pop Philosophy</div>
-      <div class="r-title">Wisecrack + Thug Notes</div>
-      <div class="r-sub">Sartre, Hegel, Foucault through film and TV (Wisecrack) and classic literature breakdowns (Thug Notes).</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/@WisecrackEDU" class="r-btn rb-p">Wisecrack ↗</a>
-        <a href="https://www.youtube.com/@thugnotes" class="r-btn rb-t">Thug Notes ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d1">
-      <div class="r-tag rt-p">Long-form</div>
-      <div class="r-title">hbomberguy — Harry Brewis</div>
-      <div class="r-sub">Long-form cultural and media critique. Voted one of the most important video essays by the BFI.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/@hbomberguy" class="r-btn rb-p">Open Channel ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d2">
-      <div class="r-tag rt-t">PBS</div>
-      <div class="r-title">Storied — PBS</div>
-      <div class="r-sub">PBS-backed literary analysis. Deep dives into novels, authors, literary history and cultural impact of books.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/@StoriedYT" class="r-btn rb-p">Open Channel ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- LINGUISTICS -->
-  <div class="r-section reveal"><span>🔤</span><h4>Linguistics</h4></div>
-  <p class="r-desc">Saussure and semiotics to Chomsky's generative grammar, phonology, morphology, syntax and semantics.</p>
-  <div class="r-grid">
-    <div class="r-card reveal reveal-d1">
-      <div class="r-tag rt-p">MIT Full Course ✅</div>
-      <div class="r-title">MIT 24.900 — Introduction to Linguistics</div>
-      <div class="r-sub">Full university course: Phonetics, Phonology, Morphology, Syntax, Semantics — 20+ MIT lectures.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/playlist?list=PLUl4u3cNGP63BZGNOqrF2qf_yxOjuG35j" class="r-btn rb-p">Open Playlist ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d2">
-      <div class="r-tag rt-t">Chomsky</div>
-      <div class="r-title">Noam Chomsky — Lectures on Linguistics</div>
-      <div class="r-sub">Generative grammar, transformational grammar, deep structure, minimalism, Universal Grammar.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/playlist?list=PLISEtDmihMo2Acv63ixYFN7mDk81i2tpK" class="r-btn rb-p">Open Playlist ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d3">
-      <div class="r-tag rt-c">Saussure</div>
-      <div class="r-title">Saussure — Semiotics, Structuralism &amp; the Linguistic Sign</div>
-      <div class="r-sub">Langue/parole, signifier/signified, synchrony/diachrony — essential foundation for structuralism.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/watch?v=8vLzIMleI8Y" class="r-btn rb-p">Structuralism ↗</a>
-        <a href="https://www.youtube.com/watch?v=SO9Fj8kP66g" class="r-btn rb-t">Key Concepts ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- PHILOSOPHY -->
-  <div class="r-section reveal"><span>🧠</span><h4>Philosophy &amp; Critical Theory</h4></div>
-  <p class="r-desc">Derrida, Žižek, Badiou, Foucault, Butler, Agamben, Baudrillard — European Graduate School and beyond.</p>
-  <div class="r-grid">
-    <div class="r-card reveal reveal-d1">
-      <div class="r-tag rt-p">EGS Essential</div>
-      <div class="r-title">European Graduate School — 1000+ Video Lectures</div>
-      <div class="r-sub">Agamben, Badiou, Baudrillard, Butler, Cixous, Derrida, Žižek, Haraway, Rancière, Virilio and many more. All in English.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/channel/UCjcFf7DKkJi2hqBPmcxfxQ" class="r-btn rb-p">Open Channel ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d2">
-      <div class="r-tag rt-t">Žižek</div>
-      <div class="r-title">Slavoj Žižek — Hegel, Ideology, Psychoanalysis</div>
-      <div class="r-sub">Hegel's dialectic, Lacanian psychoanalysis, ideology critique, late capitalism and popular culture.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/watch?v=pQ9swCiO9B8" class="r-btn rb-p">Open Lecture ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d3">
-      <div class="r-tag rt-c">Derrida</div>
-      <div class="r-title">Derrida — Deconstruction, Architecture &amp; Language</div>
-      <div class="r-sub">Derrida on deconstruction, post-structuralism, différance and how his thought applies to cultural texts.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/watch?v=xZnyTqJZFrM" class="r-btn rb-p">Open Lecture ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- FILM STUDIES -->
-  <div class="r-section reveal"><span>🎬</span><h4>Film Studies &amp; Cinema Analysis</h4></div>
-  <p class="r-desc">Cinematography, editing, semiotics of cinema, auteur theory, mise-en-scène and film-literature relationship.</p>
-  <div class="r-grid">
-    <div class="r-card reveal reveal-d1">
-      <div class="r-tag rt-p">Classic</div>
-      <div class="r-title">Every Frame a Painting — Film Essay Archive</div>
-      <div class="r-sub">The defining channel of the YouTube video essay movement. Rigorous essays on directing, editing, cinematography and sound design.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/@everyframeapainting" class="r-btn rb-p">Open Channel ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d2">
-      <div class="r-tag rt-t">Essays</div>
-      <div class="r-title">Now You See It — Film Analysis</div>
-      <div class="r-sub">Accessible but intellectually rich essays on film technique, narrative and how cinema creates meaning.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/@NowYouSeeIt" class="r-btn rb-p">Open Channel ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d3">
-      <div class="r-tag rt-c">BFI</div>
-      <div class="r-title">BFI — Video Essays &amp; Film Analysis</div>
-      <div class="r-sub">Academy-level video essays from the British Film Institute. Historical cinema movements and genre studies.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/playlist?list=PLXvkgGofjDzioCh2w6llzdEdCdEdL75zT" class="r-btn rb-p">Video Essays ↗</a>
-        <a href="https://www.youtube.com/@BFI" class="r-btn rb-t">BFI Channel ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d4">
-      <div class="r-tag rt-m">Film History</div>
-      <div class="r-title">Filmmaker IQ — Film History, Technique &amp; Theory</div>
-      <div class="r-sub">Connects cinematographic choices to cultural and literary contexts. Excellent for film-literature essays.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/@FilmmakerIQ" class="r-btn rb-p">Open Channel ↗</a>
-      </div>
-    </div>
-  </div>
-
-</section>
-<!-- END LIT HUB -->
-  <!-- ═══ GERMAN HUB ═══ -->
-<section id="german" class="tab-page">
-  <h2 class="section-title">🇩🇪 German Resource Hub</h2>
-  <p class="section-sub">Complete A1→C2 YouTube resource with auto-saved notes — courses, grammar, vocabulary, speaking, podcasts, songs and more.</p>
-
-  <div class="two-col">
-    <div class="stack">
-      <section class="card reveal">
-        <h3>German Practice Notes</h3>
-        <p class="hint">All notes auto-saved in your browser — never lost.</p>
+      <!-- PAPERWISE PLAYLISTS (simple stored URLs) -->
+      <section class="card">
+        <h3>Paper‑wise playlists (your own)</h3>
+        <p class="hint">
+          Store your favourite playlists for each paper. URLs are saved locally; click to open them in a new tab.
+        </p>
         <div class="notes-grid">
           <div class="note-card">
-            <h4>📝 Vocabulary Journal</h4>
-            <textarea data-key="g_vocab" placeholder="New words, phrases, example sentences…"></textarea>
+            <h4>Paper 1 · British literature</h4>
+            <textarea data-key="yt_p1" placeholder="Paste playlist URL(s) here…"></textarea>
           </div>
           <div class="note-card">
-            <h4>📐 Grammar Notes</h4>
-            <textarea data-key="g_grammar" placeholder="Cases, tenses, conjugations…"></textarea>
+            <h4>Paper 2 · Literary theory</h4>
+            <textarea data-key="yt_p2" placeholder="Paste playlist URL(s) here…"></textarea>
           </div>
           <div class="note-card">
-            <h4>🗣️ Speaking Practice</h4>
-            <textarea data-key="g_speaking" placeholder="Phrases to practise aloud, pronunciation tips…"></textarea>
+            <h4>Paper 3 · Postcolonial studies</h4>
+            <textarea data-key="yt_p3" placeholder="Paste playlist URL(s) here…"></textarea>
           </div>
           <div class="note-card">
-            <h4>📖 Reading &amp; Listening Log</h4>
-            <textarea data-key="g_log" placeholder="What you read/listened to today…"></textarea>
+            <h4>Paper 4/5 · Other papers</h4>
+            <textarea data-key="yt_p4" placeholder="Paste playlist URL(s) for cultural / American etc.…"></textarea>
           </div>
-        </div>
-        <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;">
-          <a href="https://docs.new" class="link-btn">✏️ New German Notes Doc</a>
-          <a href="https://www.dwds.de" class="link-btn">📖 DWDS Dictionary ↗</a>
-          <a href="https://www.dict.cc" class="link-btn">🔍 dict.cc ↗</a>
         </div>
       </section>
     </div>
 
     <div class="stack">
-      <section class="card reveal">
-        <h3>Level Guide — A1 → C2</h3>
-        <p class="hint">What to focus on at each CEFR level.</p>
+      <section class="card">
+        <h3>PYQs &amp; documents</h3>
+        <p class="hint">Replace these with your own programme‑specific folders when needed.</p>
         <ul class="link-list">
-          <li><span class="lv a1">A1</span><span style="font-size:13px;color:var(--muted);margin-left:4px;">Alphabet, greetings, pronouns, numbers, simple present. Use DW Nicos Weg + Anja.</span></li>
-          <li><span class="lv a2">A2</span><span style="font-size:13px;color:var(--muted);margin-left:4px;">Past tense, modal verbs, accusative/dative. LearnGermanOriginal + DW.</span></li>
-          <li><span class="lv b1">B1</span><span style="font-size:13px;color:var(--muted);margin-left:4px;">Full cases, Konjunktiv II, complex sentences. Easy German + Slow German.</span></li>
-          <li><span class="lv b2">B2</span><span style="font-size:13px;color:var(--muted);margin-left:4px;">Passive, advanced grammar, authentic media. Start German YouTube/Netflix.</span></li>
-          <li><span class="lv c1">C1</span><span style="font-size:13px;color:var(--muted);margin-left:4px;">Nuance, academic German, complex argumentation. Read German literature.</span></li>
-          <li><span class="lv c2">C2</span><span style="font-size:13px;color:var(--muted);margin-left:4px;">Near-native fluency. Kafka, Goethe, Schiller in original German.</span></li>
+          <li><a href="https://drive.google.com/drive/folders/1-f4TG5vzfwZ80G-3rOIKHqrlsrdm5a2Z">Paper 1 · British lit PYQs ↗</a><span class="link-tag">Drive</span></li>
+          <li><a href="https://drive.google.com/drive/folders/1-f4TG5vzfwZ80G-3rOIKHqrlsrdm5a2Z">Paper 2 · Theory PYQs ↗</a><span class="link-tag">Drive</span></li>
+          <li><a href="https://drive.google.com/drive/folders/1-f4TG5vzfwZ80G-3rOIKHqrlsrdm5a2Z">Paper 3 · Postcolonial PYQs ↗</a><span class="link-tag">Drive</span></li>
+          <li><a href="https://drive.google.com/drive/folders/1-f4TG5vzfwZ80G-3rOIKHqrlsrdm5a2Z">Paper 4/5 · PYQs &amp; reading lists ↗</a><span class="link-tag">Drive</span></li>
+          <li><a href="https://drive.google.com/drive/folders/1-f4TG5vzfwZ80G-3rOIKHqrlsrdm5a2Z">MA syllabus &amp; course outline ↗</a><span class="link-tag">Drive</span></li>
         </ul>
       </section>
 
-      <section class="card reveal">
-        <h3>Quick Links</h3>
+      <section class="card">
+        <h3>Free text archives</h3>
+        <p class="hint">Verified open‑access archives for primary texts and criticism.</p>
         <ul class="link-list">
-          <li><a href="https://www.goethe.de/en/spr/ueb.html">Goethe Institut — Online Exercises ↗</a><span class="tag">A1–C2</span></li>
-          <li><a href="https://learngerman.dw.com/en/overview">DW Learn German — Full Portal ↗</a><span class="tag">A1–B1</span></li>
-          <li><a href="https://www.youtube.com/@DWLearngerman">DW Learn German — YouTube ↗</a><span class="tag">Video</span></li>
-          <li><a href="https://www.easygerman.org/podcast">Easy German — Podcast ↗</a><span class="tag">B1–C1</span></li>
-          <li><a href="https://slowgerman.com">Slow German Podcast ↗</a><span class="tag">B1–B2</span></li>
-          <li><a href="https://conjugator.reverso.net/conjugation-german.html">Reverso Conjugator ↗</a><span class="tag">Verbs</span></li>
-          <li><a href="https://www.germanpod101.com">GermanPod101 ↗</a><span class="tag">All Levels</span></li>
+          <li><a href="https://www.gutenberg.org">Project Gutenberg ↗</a><span class="link-tag">Public domain texts</span></li>
+          <li><a href="https://archive.org">Internet Archive ↗</a><span class="link-tag">Books &amp; media</span></li>
+          <li><a href="https://www.jstor.org">JSTOR (100 free/month) ↗</a><span class="link-tag">Criticism</span></li>
+          <li><a href="https://openlibrary.org">Open Library ↗</a><span class="link-tag">Borrowable</span></li>
+          <li><a href="https://www.poetryfoundation.org">Poetry Foundation ↗</a><span class="link-tag">Poetry &amp; audio</span></li>
         </ul>
       </section>
     </div>
   </div>
 
-  <hr class="divider"/>
-  <h2 class="section-title">📺 German A1→C2 YouTube Master Resource</h2>
-  <p class="section-sub">Organized by level, grammar component, skill and media type. All links verified. Curated by D K Nishad.</p>
-
-  <!-- STRUCTURED COURSES -->
-  <div class="r-section reveal"><span>📘</span><h4>Structured Courses A1 → C2</h4></div>
-  <p class="r-desc">Full multi-episode video courses that take you through a complete level from start to finish.</p>
-  <div class="r-grid">
-    <div class="r-card reveal reveal-d1">
-      <div class="r-tag rt-p">DW · Official ✅</div>
-      <div class="lv-row"><span class="lv a1">A1</span><span class="lv a2">A2</span><span class="lv b1">B1</span></div>
-      <div class="r-title">Nicos Weg — Deutsche Welle (A1 + A2 Full Course)</div>
-      <div class="r-sub">The gold standard for structured German learning. Follows Nico arriving in Germany. Full storyline, grammar, vocabulary and exercises. Produced by Germany's official international broadcaster.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/watch?v=4-eDoThe6qo" class="r-btn rb-p">Nicos Weg A1 Film ↗</a>
-        <a href="https://learngerman.dw.com/en/overview" class="r-btn rb-t">DW Full Portal ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d2">
-      <div class="r-tag rt-t">Full Course</div>
-      <div class="lv-row"><span class="lv a1">A1</span></div>
-      <div class="r-title">Learn German with Anja — A1 Beginners Full Course</div>
-      <div class="r-sub">Native speaker. Warm, clear teaching from complete beginner level. Greetings, introductions, numbers, articles, basic sentence building.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/@LearnGermanwithAnja" class="r-btn rb-p">Open Channel ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d3">
-      <div class="r-tag rt-c">All Levels</div>
-      <div class="lv-row"><span class="lv a1">A1</span><span class="lv a2">A2</span><span class="lv b1">B1</span><span class="lv b2">B2</span><span class="lv c1">C1</span><span class="lv c2">C2</span></div>
-      <div class="r-title">LearnGermanOriginal — Structured Grammar A1→B2</div>
-      <div class="r-sub">Structured grammar and vocabulary lessons from A1 to B2. Each lesson focuses on one grammar point with free downloadable worksheets.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/@LearnGermanOriginal" class="r-btn rb-p">Open Channel ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d4">
-      <div class="r-tag rt-m">Channel</div>
-      <div class="lv-row"><span class="lv a1">A1</span><span class="lv a2">A2</span><span class="lv b1">B1</span><span class="lv b2">B2</span><span class="lv c1">C1</span><span class="lv c2">C2</span></div>
-      <div class="r-title">GermanPod101 — Full Channel (All Levels)</div>
-      <div class="r-sub">Comprehensive audio-visual lessons at every level. Free lessons are extensive. Good for structured listening practice alongside other resources.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/@GermanPod101" class="r-btn rb-p">Open Channel ↗</a>
-      </div>
-    </div>
+  <div class="r-section">
+    <div class="r-icon">L</div>
+    <h4>Literature &amp; humanities · verified YouTube</h4>
   </div>
+  <p class="r-desc">
+    Only playlists and channels that have been checked to exist and match their description. [web:85][web:87][web:95]
+  </p>
 
-  <!-- VOCABULARY -->
-  <div class="r-section reveal"><span>📖</span><h4>Vocabulary by Level</h4></div>
-  <p class="r-desc">Targeted vocabulary building at each CEFR level — from basic A1 words to C2 academic vocabulary.</p>
   <div class="r-grid">
-    <div class="r-card reveal reveal-d1">
-      <div class="r-tag rt-p">DW Official ✅</div>
-      <div class="lv-row"><span class="lv a1">A1</span><span class="lv a2">A2</span><span class="lv b1">B1</span></div>
-      <div class="r-title">DW Learn German — Full YouTube Channel</div>
-      <div class="r-sub">Deutsche Welle's main German-learning channel. Vocabulary, grammar and listening exercises. Search within channel for level-specific playlists.</div>
+    <article class="r-card">
+      <div class="r-tag">Channel · summaries</div>
+      <div class="r-title">Course Hero — literature &amp; novel breakdowns</div>
+      <p class="r-sub">Hundreds of plot, character and theme breakdowns for key texts. Great for quick revision.</p>
       <div class="r-btns">
-        <a href="https://www.youtube.com/@DWLearngerman" class="r-btn rb-p">Open DW Channel ↗</a>
+        <a class="r-btn rb-main" href="https://www.youtube.com/@coursehero">Channel ↗</a>
       </div>
-    </div>
-    <div class="r-card reveal reveal-d2">
-      <div class="r-tag rt-t">Vocabulary</div>
-      <div class="lv-row"><span class="lv a1">A1</span><span class="lv a2">A2</span><span class="lv b1">B1</span><span class="lv b2">B2</span></div>
-      <div class="r-title">Lingoni German — Vocabulary &amp; Grammar by Topic</div>
-      <div class="r-sub">Vocabulary by topic (food, travel, work, emotions) at all levels. Also dedicated grammar playlists. Clean presentation, reliable content.</div>
+    </article>
+
+    <article class="r-card">
+      <div class="r-tag">Yale · theory</div>
+      <div class="r-title">ENGL 300 · Introduction to Theory of Literature</div>
+      <p class="r-sub">Paul H. Fry’s full lecture series; official Yale upload with syllabus. [web:85][web:87]</p>
       <div class="r-btns">
-        <a href="https://www.youtube.com/@LingoniGerman" class="r-btn rb-p">Open Channel ↗</a>
+        <a class="r-btn rb-main" href="https://www.youtube.com/playlist?list=PLD00D35CBC75941BD">Playlist ↗</a>
+        <a class="r-btn rb-soft" href="https://oyc.yale.edu/english/engl-300">Course page ↗</a>
       </div>
-    </div>
-    <div class="r-card reveal reveal-d3">
-      <div class="r-tag rt-c">Sleep Learning</div>
-      <div class="lv-row"><span class="lv b1">B1</span><span class="lv b2">B2</span><span class="lv c1">C1</span></div>
-      <div class="r-title">Deutsch lernen im Schlaf — Vocabulary B1→C1</div>
-      <div class="r-sub">Sleep-learning format with slow, repeated pronunciation. Great for passive immersion and vocabulary retention at intermediate level.</div>
+    </article>
+
+    <article class="r-card">
+      <div class="r-tag">Yale · American lit</div>
+      <div class="r-title">The American Novel Since 1945</div>
+      <p class="r-sub">Post‑war American fiction course (Amy Hungerford), confirmed active playlist. [web:95]</p>
       <div class="r-btns">
-        <a href="https://www.youtube.com/watch?v=3rDTc-3Tcck" class="r-btn rb-p">Open Video ↗</a>
+        <a class="r-btn rb-main" href="https://www.youtube.com/playlist?list=PLE33BCD966FF96F23">Playlist ↗</a>
       </div>
-    </div>
+    </article>
+
+    <article class="r-card">
+      <div class="r-tag">IIT Kanpur · postcolonial</div>
+      <div class="r-title">Postcolonial Literature (Sayan Chattopadhyay)</div>
+      <p class="r-sub">Full course on postcolonial texts and theory; playlist verified. [web:99]</p>
+      <div class="r-btns">
+        <a class="r-btn rb-main" href="https://www.youtube.com/playlist?list=PL0BZ98iyy85PcM7PI-g9EzU1bjvcdVWWG">Playlist ↗</a>
+      </div>
+    </article>
+
+    <article class="r-card">
+      <div class="r-tag">NPTEL · Edward Said</div>
+      <div class="r-title">Postcolonial Theory I · Edward Said</div>
+      <p class="r-sub">Focused NPTEL lecture on Orientalism and discourse. [web:93]</p>
+      <div class="r-btns">
+        <a class="r-btn rb-main" href="https://www.youtube.com/watch?v=7w_KOZdeWe4">Lecture ↗</a>
+      </div>
+    </article>
+
+    <article class="r-card">
+      <div class="r-tag">MIT · linguistics</div>
+      <div class="r-title">MIT 24.900 · Introduction to Linguistics</div>
+      <p class="r-sub">University‑level course; official OCW playlist. [web:95]</p>
+      <div class="r-btns">
+        <a class="r-btn rb-main" href="https://www.youtube.com/playlist?list=PLUl4u3cNGP63BZGNOqrF2qf_yxOjuG35j">Playlist ↗</a>
+      </div>
+    </article>
+
+    <article class="r-card">
+      <div class="r-tag">Film essays</div>
+      <div class="r-title">Every Frame a Painting</div>
+      <p class="r-sub">Foundational video‑essay channel on film form and editing; archived but still fully watchable. [web:107]</p>
+      <div class="r-btns">
+        <a class="r-btn rb-main" href="https://www.youtube.com/@everyframeapainting">Channel ↗</a>
+      </div>
+    </article>
   </div>
-
-  <!-- GRAMMAR -->
-  <div class="r-section reveal"><span>📐</span><h4>Grammar — Organized by Component</h4></div>
-  <p class="r-desc">Each major grammar area has its own card — use as individual reference points for each topic.</p>
-
-  <div class="grammar-heading">📌 Articles — der / die / das / ein / eine</div>
-  <div class="r-grid">
-    <div class="r-card reveal reveal-d1">
-      <div class="r-tag rt-p">Definite Articles</div>
-      <div class="lv-row"><span class="lv a1">A1</span><span class="lv a2">A2</span></div>
-      <div class="r-title">Rules for German Articles — der / die / das</div>
-      <div class="r-sub">Covers -tion, -heit, -ung endings and patterns across noun types to determine correct article. Essential from day one.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/@LearnGermanwithAnja" class="r-btn rb-p">Find on Anja's Channel ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d2">
-      <div class="r-tag rt-t">All Cases</div>
-      <div class="lv-row"><span class="lv a1">A1</span><span class="lv a2">A2</span><span class="lv b1">B1</span></div>
-      <div class="r-title">LearnGermanOriginal — Articles &amp; Noun Gender</div>
-      <div class="r-sub">Multiple lessons on definite and indefinite articles in all four cases with downloadable worksheets.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/@LearnGermanOriginal" class="r-btn rb-p">Find on Channel ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="grammar-heading">📌 Cases — Nominativ · Akkusativ · Dativ · Genitiv</div>
-  <div class="r-grid">
-    <div class="r-card reveal reveal-d1">
-      <div class="r-tag rt-p">Nominative</div>
-      <div class="lv-row"><span class="lv a1">A1</span></div>
-      <div class="r-title">Nominative Case — Subject &amp; Predicate</div>
-      <div class="r-sub">The subject case — der/die/das/ein/eine. Foundation of every German sentence.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/@LearnGermanwithAnja" class="r-btn rb-p">Find on Anja's Channel ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d2">
-      <div class="r-tag rt-t">Accusative</div>
-      <div class="lv-row"><span class="lv a1">A1</span><span class="lv a2">A2</span></div>
-      <div class="r-title">Accusative Case — Direct Object</div>
-      <div class="r-sub">Den/die/das — masculine changes (der→den). Verbs taking accusative. Prepositions: durch, für, gegen, ohne, um.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/@LearnGermanwithAnja" class="r-btn rb-p">Find on Anja's Channel ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d3">
-      <div class="r-tag rt-c">Dative</div>
-      <div class="lv-row"><span class="lv a2">A2</span><span class="lv b1">B1</span></div>
-      <div class="r-title">Dative Case — Indirect Object &amp; Dative Verbs</div>
-      <div class="r-sub">Dem/der/dem — indirect object, prepositions (aus, bei, mit, nach, seit, von, zu) and dative verbs (helfen, danken, folgen).</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/@LearnGermanOriginal" class="r-btn rb-p">Find on Channel ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d4">
-      <div class="r-tag rt-m">Genitive</div>
-      <div class="lv-row"><span class="lv b1">B1</span><span class="lv b2">B2</span></div>
-      <div class="r-title">Genitive Case — Possession &amp; Genitive Prepositions</div>
-      <div class="r-sub">Des/der/des — possession, -s/-es endings. Prepositions: wegen, trotz, während, statt. Genitive in formal written German.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/watch?v=l1DSqVZrbu4" class="r-btn rb-p">Open Video ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="grammar-heading">📌 Verbs — Conjugation, Tenses, Irregular Verbs</div>
-  <div class="r-grid">
-    <div class="r-card reveal reveal-d1">
-      <div class="r-tag rt-p">Comprehensive</div>
-      <div class="lv-row"><span class="lv a1">A1</span><span class="lv a2">A2</span><span class="lv b1">B1</span><span class="lv b2">B2</span><span class="lv c1">C1</span></div>
-      <div class="r-title">German Grammar Mastery — Full Verb &amp; Tense Playlist</div>
-      <div class="r-sub">Präsens, Perfekt, Präteritum, Futur I+II, reflexive verbs, strong/weak/irregular verbs, separable verbs — all in one playlist.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/playlist?list=PLDSaNmesMVOh5WdZ7Rx-nIei_MGhdBO-X" class="r-btn rb-p">Open Playlist ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d2">
-      <div class="r-tag rt-t">Separable Verbs</div>
-      <div class="lv-row"><span class="lv a1">A1</span><span class="lv a2">A2</span></div>
-      <div class="r-title">Separable &amp; Inseparable Verbs — anfangen, aufmachen</div>
-      <div class="r-sub">How prefix changes meaning, when verbs split, and which prefixes are always inseparable.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/@LearnGermanOriginal" class="r-btn rb-p">Find on Channel ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="grammar-heading">📌 Modal Verbs — können · müssen · dürfen · sollen · wollen · mögen</div>
-  <div class="r-grid">
-    <div class="r-card reveal reveal-d1">
-      <div class="r-tag rt-p">All 6 Modals</div>
-      <div class="lv-row"><span class="lv a1">A1</span><span class="lv a2">A2</span></div>
-      <div class="r-title">All 6 Modal Verbs — Conjugation &amp; Usage</div>
-      <div class="r-sub">können, müssen, dürfen, sollen, wollen, mögen — all conjugations, word-order rules and double infinitive construction.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/@LearnGermanwithAnja" class="r-btn rb-p">Find on Anja's Channel ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d2">
-      <div class="r-tag rt-t">DW Context ✅</div>
-      <div class="lv-row"><span class="lv a1">A1</span><span class="lv a2">A2</span></div>
-      <div class="r-title">Modal Verbs in Context — DW Nicos Weg</div>
-      <div class="r-sub">DW Nicos Weg integrates modal verbs into realistic dialogues across A1/A2 episodes — easier to internalize in context.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/watch?v=4-eDoThe6qo" class="r-btn rb-p">Open Nicos Weg ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="grammar-heading">📌 Conjunctions &amp; Word Order — Satzstellung</div>
-  <div class="r-grid">
-    <div class="r-card reveal reveal-d1">
-      <div class="r-tag rt-p">Word Order</div>
-      <div class="lv-row"><span class="lv a2">A2</span><span class="lv b1">B1</span><span class="lv b2">B2</span></div>
-      <div class="r-title">German Conjunctions &amp; Word Order — Complete Lecture</div>
-      <div class="r-sub">Coordinating vs. subordinating conjunctions. How weil, dass, wenn, obwohl kick the verb to the end. V2 rule and main clause inversion.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/watch?v=tKdd0jz_Oaw" class="r-btn rb-p">Open Video ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d2">
-      <div class="r-tag rt-t">Nebensatz</div>
-      <div class="lv-row"><span class="lv b1">B1</span><span class="lv b2">B2</span></div>
-      <div class="r-title">Word Order in Subordinate Clauses — Nebensatz</div>
-      <div class="r-sub">Verb-final word order, position of modal verbs in subordinate clauses, double infinitive with modals. Critical for B1/B2.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/watch?v=groABBW6JHs" class="r-btn rb-p">Open Video ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="grammar-heading">📌 Konjunktiv II &amp; Passive Voice</div>
-  <div class="r-grid">
-    <div class="r-card reveal reveal-d1">
-      <div class="r-tag rt-p">Konjunktiv II</div>
-      <div class="lv-row"><span class="lv b1">B1</span><span class="lv b2">B2</span></div>
-      <div class="r-title">Konjunktiv II — Subjunctive &amp; Conditional</div>
-      <div class="r-sub">würde + infinitive, strong verb Konjunktiv II forms, modal verbs in Konjunktiv II. Polite requests, hypotheticals and reported speech.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/@LearnGermanwithAnja" class="r-btn rb-p">Anja's Channel ↗</a>
-        <a href="https://www.youtube.com/@LingoniGerman" class="r-btn rb-t">Lingoni ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d2">
-      <div class="r-tag rt-t">Passive Voice</div>
-      <div class="lv-row"><span class="lv b1">B1</span><span class="lv b2">B2</span></div>
-      <div class="r-title">German Passive Voice — Werden-Passiv &amp; Zustandspassiv</div>
-      <div class="r-sub">Werden-Passiv (action) vs. Sein-Passiv (state). Passive with modal verbs. How to recognize and form passive in all tenses.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/@LearnGermanOriginal" class="r-btn rb-p">Find on Channel ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- SPEAKING -->
-  <div class="r-section reveal"><span>🗣️</span><h4>Speaking &amp; Pronunciation</h4></div>
-  <p class="r-desc">Umlauts, the German R-sound, Auslautverhärtung and fluency building through real conversation.</p>
-  <div class="r-grid">
-    <div class="r-card reveal reveal-d1">
-      <div class="r-tag rt-p">Pronunciation</div>
-      <div class="lv-row"><span class="lv a1">A1</span><span class="lv a2">A2</span></div>
-      <div class="r-title">German Pronunciation Masterclass — All Sounds</div>
-      <div class="r-sub">Umlauts (ä,ö,ü), ch-sound, sch, st, sp, final devoicing (Auslautverhärtung) and the German R. Essential from day one.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/@LearnGermanwithAnja" class="r-btn rb-p">Find on Anja's Channel ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d2">
-      <div class="r-tag rt-t">Easy German ✅</div>
-      <div class="lv-row"><span class="lv b1">B1</span><span class="lv b2">B2</span><span class="lv c1">C1</span></div>
-      <div class="r-title">Easy German — Street Interviews &amp; Native Conversations</div>
-      <div class="r-sub">Native speakers on the streets of Germany. German and English subtitles available. The best channel for real spoken German at natural speed.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/@EasyGerman" class="r-btn rb-p">Open Channel ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- PODCASTS -->
-  <div class="r-section reveal"><span>🎙️</span><h4>Podcasts</h4></div>
-  <p class="r-desc">Listening practice through German-language and German-learning podcasts at every level.</p>
-  <div class="r-grid">
-    <div class="r-card reveal reveal-d1">
-      <div class="r-tag rt-p">B1+ ✅</div>
-      <div class="lv-row"><span class="lv b1">B1</span><span class="lv b2">B2</span><span class="lv c1">C1</span></div>
-      <div class="r-title">Easy German Podcast — easygerman.fm</div>
-      <div class="r-sub">Full podcast episodes with transcripts covering German culture, society and current events. Hosted by native speakers. One of the best German learning podcasts in the world.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/channel/UCbxb2fqe9oNgglAoYqsYOtQ" class="r-btn rb-p">Open Channel ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d2">
-      <div class="r-tag rt-t">B1+</div>
-      <div class="lv-row"><span class="lv b1">B1</span><span class="lv b2">B2</span></div>
-      <div class="r-title">Slow German — mit Annik Rubens</div>
-      <div class="r-sub">Short, clearly spoken podcast episodes on German culture, history and society at B1–B2 pace. German transcripts available. Perfect for intermediate immersion.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/@SlowGerman" class="r-btn rb-p">Open Channel ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d3">
-      <div class="r-tag rt-m">A2–B1 ✅</div>
-      <div class="lv-row"><span class="lv a2">A2</span><span class="lv b1">B1</span></div>
-      <div class="r-title">DW — Langsam gesprochene Nachrichten</div>
-      <div class="r-sub">Daily news spoken slowly in German. Transcripts available on DW website. Ideal for A2/B1 daily listening practice with real vocabulary.</div>
-      <div class="r-btns">
-        <a href="https://www.dw.com/de/deutsch-lernen/nachrichten/s-8030" class="r-btn rb-p">DW Slow News ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- SONGS -->
-  <div class="r-section reveal"><span>🎵</span><h4>Songs &amp; Music</h4></div>
-  <p class="r-desc">Learning German through music — pop, folk, classics and children's songs for vocabulary retention.</p>
-  <div class="r-grid">
-    <div class="r-card reveal reveal-d1">
-      <div class="r-tag rt-p">A1 Songs</div>
-      <div class="lv-row"><span class="lv a1">A1</span></div>
-      <div class="r-title">10 Easy German Songs — Complete Beginner A1</div>
-      <div class="r-sub">10 original songs teaching greetings, pronouns, verbs, food, colours and numbers at A1 level. Clear pronunciation, lyrics shown, fun and repetitive for memory retention.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/watch?v=BpQ8tFmWVLE" class="r-btn rb-p">Open Video ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d2">
-      <div class="r-tag rt-t">Pop Music</div>
-      <div class="lv-row"><span class="lv b1">B1</span><span class="lv b2">B2</span></div>
-      <div class="r-title">Learn German with Songs — Rammstein, Xavier Naidoo, Cro</div>
-      <div class="r-sub">Lyric breakdowns of popular German artists. Vocabulary, grammar and cultural context through authentic music.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/@EasyGerman" class="r-btn rb-p">Easy German Songs ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d3">
-      <div class="r-tag rt-c">Children's Songs</div>
-      <div class="lv-row"><span class="lv a1">A1</span><span class="lv a2">A2</span></div>
-      <div class="r-title">German Children's Songs — Kinderlieder</div>
-      <div class="r-sub">Classic German children's songs — Hänschen Klein, Der Mond ist aufgegangen, Alle meine Entchen. Great for pronunciation and basic vocabulary.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/watch?v=fVDGEMVwCQA" class="r-btn rb-p">Open Video ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- MOVIES & TV -->
-  <div class="r-section reveal"><span>🎬</span><h4>German Movies &amp; TV</h4></div>
-  <p class="r-desc">Immersion through authentic German cinema and television — with subtitles for comprehensible input.</p>
-  <div class="r-grid">
-    <div class="r-card reveal reveal-d1">
-      <div class="r-tag rt-p">Netflix B2+</div>
-      <div class="lv-row"><span class="lv b2">B2</span><span class="lv c1">C1</span><span class="lv c2">C2</span></div>
-      <div class="r-title">Dark (Netflix) — German Sci-Fi Thriller Series</div>
-      <div class="r-sub">One of the best German series for immersion. Dense dialogue, multiple timelines, rich vocabulary. Watch with German subtitles at B2+.</div>
-      <div class="r-btns">
-        <a href="https://www.netflix.com/title/80100172" class="r-btn rb-p">Open on Netflix ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d2">
-      <div class="r-tag rt-t">YouTube Free ✅</div>
-      <div class="lv-row"><span class="lv a1">A1</span><span class="lv a2">A2</span></div>
-      <div class="r-title">Extr@ auf Deutsch — German Learning Sitcom (Free)</div>
-      <div class="r-sub">A German-language sitcom made for learners. Clear speech, A1/A2 vocabulary, subtitles available. All episodes free on YouTube.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/watch?v=NpJSDBd4LP8" class="r-btn rb-p">Open Episode 1 ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d3">
-      <div class="r-tag rt-m">YouTube Free ✅</div>
-      <div class="lv-row"><span class="lv b1">B1</span><span class="lv b2">B2</span></div>
-      <div class="r-title">Easy German — Full Movie in German with Subtitles</div>
-      <div class="r-sub">Easy German's curated film content with dual German/English subtitles. Comprehensible input at natural speech rate.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/@EasyGerman" class="r-btn rb-p">Easy German Channel ↗</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- GERMAN LITERATURE -->
-  <div class="r-section reveal"><span>📚</span><h4>German Literature in Original</h4></div>
-  <p class="r-desc">Kafka, Goethe, Schiller, Rilke — reading and listening to German literature at C1/C2 level.</p>
-  <div class="r-grid">
-    <div class="r-card reveal reveal-d1">
-      <div class="r-tag rt-p">C1–C2</div>
-      <div class="lv-row"><span class="lv c1">C1</span><span class="lv c2">C2</span></div>
-      <div class="r-title">Franz Kafka — Die Verwandlung (Audiobook)</div>
-      <div class="r-sub">Kafka's Metamorphosis in original German. Free audiobook on YouTube. Excellent for C1/C2 literary vocabulary and complex sentence structures.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/watch?v=9TXgf42bB78" class="r-btn rb-p">Open Audiobook ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d2">
-      <div class="r-tag rt-t">C1–C2</div>
-      <div class="lv-row"><span class="lv c1">C1</span><span class="lv c2">C2</span></div>
-      <div class="r-title">Goethe — Faust (Audiobook in German)</div>
-      <div class="r-sub">Goethe's Faust Part I in original German. One of the most important works in German literary history. Free on YouTube.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/watch?v=7L5uD4jWCmA" class="r-btn rb-p">Open Audiobook ↗</a>
-      </div>
-    </div>
-    <div class="r-card reveal reveal-d3">
-      <div class="r-tag rt-m">LibriVox</div>
-      <div class="lv-row"><span class="lv c1">C1</span><span class="lv c2">C2</span></div>
-      <div class="r-title">LibriVox — Free German Audiobooks (Public Domain)</div>
-      <div class="r-sub">Hundreds of free German audiobooks in the public domain — Schiller, Rilke, Brecht, Heine and more. Volunteer-read, free forever.</div>
-      <div class="r-btns">
-        <a href="https://www.youtube.com/@LibriVoxAudiobooks" class="r-btn rb-p">LibriVox YouTube ↗</a>
-      </div>
-    </div>
-  </div>
-
 </section>
-<!-- END GERMAN HUB -->
-  <!-- ═══ PhD PREP ═══ -->
-<section id="phd" class="tab-page">
-  <h2 class="section-title">🎓 PhD Application Prep</h2>
-  <p class="section-sub">Application tracker · Deadline manager · Proposal notes · Supervisor outreach templates.</p>
+
+<!-- GERMAN HUB -->
+<section id="german" class="tab-page">
+  <h2 class="section-title">German A1–C2 Hub</h2>
+  <p class="section-sub">
+    Structured courses, podcasts and media for each level, plus your own notebooks. All links verified. [web:100][web:102][web:104][web:108]
+  </p>
 
   <div class="two-col">
     <div class="stack">
+      <section class="card">
+        <h3>Practice notebooks (auto‑saved)</h3>
+        <p class="hint">Notes stay only in this browser.</p>
+        <div class="notes-grid">
+          <div class="note-card">
+            <h4>Vocabulary journal</h4>
+            <textarea data-key="de_vocab" placeholder="New words, context sentences, collocations…"></textarea>
+          </div>
+          <div class="note-card">
+            <h4>Grammar notes</h4>
+            <textarea data-key="de_grammar" placeholder="Cases, tenses, tricky patterns…"></textarea>
+          </div>
+          <div class="note-card">
+            <h4>Speaking phrases</h4>
+            <textarea data-key="de_speaking" placeholder="Chunks you want to use in real speech…"></textarea>
+          </div>
+          <div class="note-card">
+            <h4>Listening &amp; reading log</h4>
+            <textarea data-key="de_log" placeholder="Which episodes, videos, texts you did today…"></textarea>
+          </div>
+        </div>
+      </section>
+    </div>
 
-      <section class="card reveal">
-        <h3>Application Tracker</h3>
-        <p class="hint">Add and track every PhD application in one place.</p>
+    <div class="stack">
+      <section class="card">
+        <h3>Level map · A1 → C2</h3>
+        <p class="hint">Use as a compass rather than a strict checklist.</p>
+        <ul class="link-list">
+          <li><strong>A1:</strong> survival phrases, simple present, basic nouns and verbs.</li>
+          <li><strong>A2:</strong> daily past tense, modal verbs, common prepositions.</li>
+          <li><strong>B1:</strong> full case system, independent travel, simple podcasts.</li>
+          <li><strong>B2:</strong> films and radio with support, opinion essays.</li>
+          <li><strong>C1/C2:</strong> academic texts, literature, debates.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h3>Core reference links</h3>
+        <ul class="link-list">
+          <li><a href="https://learngerman.dw.com/en/overview">DW Learn German portal ↗</a><span class="link-tag">Official</span></li>
+          <li><a href="https://www.goethe.de/en/spr/ueb.html">Goethe online exercises ↗</a><span class="link-tag">A1–C2</span></li>
+          <li><a href="https://www.dwds.de">DWDS dictionary ↗</a><span class="link-tag">Mono‑lingual</span></li>
+          <li><a href="https://conjugator.reverso.net/conjugation-german.html">Reverso conjugator ↗</a><span class="link-tag">Verbs</span></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <div class="r-section">
+    <div class="r-icon">DE</div>
+    <h4>Verified German courses &amp; media</h4>
+  </div>
+  <p class="r-desc">
+    A core spine you can build around, from official DW courses to streetside conversations. [web:100][web:102][web:104][web:108]
+  </p>
+
+  <div class="r-grid">
+    <article class="r-card">
+      <div class="r-tag">DW · structured</div>
+      <div class="r-title">Nicos Weg · A1–B1</div>
+      <p class="r-sub">Story‑based course from Deutsche Welle; playlist and portal both confirmed active. [web:100][web:102]</p>
+      <div class="r-btns">
+        <a class="r-btn rb-main" href="https://www.youtube.com/playlist?list=PLs7zUO7VPyJ5DV1iBRgSw2uDl832n0bLg">Playlist ↗</a>
+        <a class="r-btn rb-soft" href="https://learngerman.dw.com/en/overview">Course site ↗</a>
+      </div>
+    </article>
+
+    <article class="r-card">
+      <div class="r-tag">YouTube · A1/B1</div>
+      <div class="r-title">Learn German with Anja</div>
+      <p class="r-sub">High‑energy, beginner‑friendly explanations for core grammar and survival topics.</p>
+      <div class="r-btns">
+        <a class="r-btn rb-main" href="https://www.youtube.com/@LearnGermanwithAnja">Channel ↗</a>
+      </div>
+    </article>
+
+    <article class="r-card">
+      <div class="r-tag">Grammar spine</div>
+      <div class="r-title">LearnGermanOriginal</div>
+      <p class="r-sub">Clear step‑wise grammar across A1–B2; many topics organised into playlists.</p>
+      <div class="r-btns">
+        <a class="r-btn rb-main" href="https://www.youtube.com/@LearnGermanOriginal">Channel ↗</a>
+      </div>
+    </article>
+
+    <article class="r-card">
+      <div class="r-tag">Street German</div>
+      <div class="r-title">Easy German</div>
+      <p class="r-sub">Interview‑style videos with German/English subtitles; ideal from late A2 onward. [web:108]</p>
+      <div class="r-btns">
+        <a class="r-btn rb-main" href="https://www.youtube.com/@EasyGerman">Channel ↗</a>
+      </div>
+    </article>
+
+    <article class="r-card">
+      <div class="r-tag">Podcast · B1/B2</div>
+      <div class="r-title">Slow German mit Annik Rubens</div>
+      <p class="r-sub">Short, clearly spoken episodes with transcripts; excellent intermediate listening.</p>
+      <div class="r-btns">
+        <a class="r-btn rb-main" href="https://www.youtube.com/@SlowGerman">YouTube ↗</a>
+        <a class="r-btn rb-soft" href="https://slowgerman.com">Website ↗</a>
+      </div>
+    </article>
+
+    <article class="r-card">
+      <div class="r-tag">Podcast</div>
+      <div class="r-title">Easy German Podcast</div>
+      <p class="r-sub">Weekly long‑form episodes with transcripts; excellent for B1+ listening.</p>
+      <div class="r-btns">
+        <a class="r-btn rb-main" href="https://www.youtube.com/channel/UCbxb2fqe9oNgglAoYqsYOtQ">Podcast channel ↗</a>
+      </div>
+    </article>
+
+    <article class="r-card">
+      <div class="r-tag">Sitcom · A2/B1</div>
+      <div class="r-title">Extr@ auf Deutsch</div>
+      <p class="r-sub">Learner‑oriented sitcom; Episode 1 “Sam’s Ankunft” is widely used in classrooms. [web:104]</p>
+      <div class="r-btns">
+        <a class="r-btn rb-main" href="https://www.youtube.com/watch?v=4lWQW5_CPGQ">Episode 1 ↗</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- PhD WORKSPACE with table + deadlines -->
+<section id="phd" class="tab-page">
+  <h2 class="section-title">PhD application workspace</h2>
+  <p class="section-sub">
+    Tracker, deadlines and drafting space in one place; detailed writing still lives in Docs.
+  </p>
+
+  <div class="two-col">
+    <div class="stack">
+      <section class="card">
+        <h3>Applications tracker</h3>
+        <p class="hint">Add programmes with deadline &amp; status; everything is stored in this browser.</p>
         <div class="form-row">
-          <input type="text" id="phd-uni" placeholder="University name" style="flex:2;"/>
-          <input type="text" id="phd-prog" placeholder="Programme / Department"/>
-          <input type="date" id="phd-date"/>
+          <input id="phd-uni" type="text" placeholder="University / country" style="flex:2;">
+          <input id="phd-prog" type="text" placeholder="Programme / dept">
+          <input id="phd-date" type="date">
           <select id="phd-status">
             <option value="pending">Pending</option>
             <option value="applied">Applied</option>
             <option value="shortlisted">Shortlisted</option>
             <option value="rejected">Rejected</option>
           </select>
-          <button class="primary" onclick="addPhD()">+ Add</button>
+          <button class="primary" type="button" onclick="addPhDRow()">+ Add</button>
         </div>
         <div class="table-wrap">
-          <table id="phd-table">
+          <table>
             <thead>
               <tr>
                 <th>University</th>
@@ -1884,498 +909,327 @@ tr:hover td{background:#F8F8FF;}
         </div>
       </section>
 
-      <section class="card reveal">
-        <h3>Proposal &amp; Statement Notes</h3>
-        <p class="hint">Draft your research proposal, SOP and writing samples here. Auto-saved.</p>
+      <section class="card">
+        <h3>Long‑form notes</h3>
+        <p class="hint">Scratchpad for proposal and SOP ideas; move stable drafts to Docs.</p>
         <div class="notes-grid">
           <div class="note-card">
-            <h4>📄 Research Proposal Draft</h4>
-            <textarea data-key="phd_proposal" placeholder="Research questions, methodology, theoretical framework…" style="min-height:120px;"></textarea>
+            <h4>Proposal notes</h4>
+            <textarea data-key="phd_proposal" placeholder="Questions, archives, key theorists, case studies…"></textarea>
           </div>
           <div class="note-card">
-            <h4>✍️ Statement of Purpose</h4>
-            <textarea data-key="phd_sop" placeholder="Academic background, research interests, why this programme…" style="min-height:120px;"></textarea>
-          </div>
-          <div class="note-card">
-            <h4>📧 Supervisor Outreach</h4>
-            <textarea data-key="phd_email" placeholder="Email drafts, supervisor names, responses received…"></textarea>
-          </div>
-          <div class="note-card">
-            <h4>📝 General PhD Notes</h4>
-            <textarea data-key="phd_notes" placeholder="Funding info, visa notes, interview prep…"></textarea>
+            <h4>SOP notes</h4>
+            <textarea data-key="phd_sop" placeholder="Academic trajectory, research fit, supervision plans…"></textarea>
           </div>
         </div>
-        <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;">
-          <a href="https://docs.new" class="link-btn">✏️ New Proposal Doc</a>
-          <a href="https://sheets.new" class="link-btn">📊 New Tracker Sheet</a>
+        <div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:8px;">
+          <a class="r-btn rb-main" href="https://docs.new">New Google Doc ↗</a>
+          <a class="r-btn rb-soft" href="https://sheets.new">New Google Sheet ↗</a>
         </div>
       </section>
-
     </div>
 
     <div class="stack">
-
-      <section class="card reveal">
-        <h3>Deadline Manager</h3>
-        <p class="hint">Add deadlines — urgency calculated automatically.</p>
+      <section class="card">
+        <h3>Deadline overview</h3>
+        <p class="hint">A simple list with urgency tags; mirrors entries from the tracker.</p>
         <div class="form-row">
-          <input type="text" id="dl-name" placeholder="University / Task name" style="flex:2;"/>
-          <input type="date" id="dl-date"/>
-          <button class="primary" onclick="addDeadline()">+ Add</button>
+          <input id="dl-name" type="text" placeholder="University / task">
+          <input id="dl-date" type="date">
+          <button class="primary" type="button" onclick="addDeadline()">+ Add</button>
         </div>
         <div class="deadline-grid" id="deadline-container"></div>
       </section>
 
-      <section class="card reveal">
-        <h3>PhD Resources</h3>
-        <p class="hint">Application portals, funding, statement guides and supervisor search tools.</p>
-        <ul class="link-list">
-          <li><a href="https://www.findaphd.com">FindAPhD — Global PhD Search ↗</a><span class="tag">Applications</span></li>
-          <li><a href="https://www.scholarshipportal.com">ScholarshipPortal — Funding ↗</a><span class="tag">Funding</span></li>
-          <li><a href="https://www.ugc.ac.in/jrf/">UGC JRF / NET Portal ↗</a><span class="tag">India</span></li>
-          <li><a href="https://www.daad.de/en/">DAAD — German Academic Exchange ↗</a><span class="tag">Germany</span></li>
-          <li><a href="https://www.britishcouncil.in/study-uk/scholarships">British Council Scholarships ↗</a><span class="tag">UK</span></li>
-          <li><a href="https://us.fulbrightonline.org">Fulbright Program ↗</a><span class="tag">USA</span></li>
-          <li><a href="https://www.gate-germany.de">GATE — Germany ↗</a><span class="tag">Germany</span></li>
-          <li><a href="https://erasmus.ac.in">Erasmus+ India ↗</a><span class="tag">Europe</span></li>
-        </ul>
-      </section>
-
-      <section class="card reveal">
-        <h3>Progress Tracker</h3>
-        <p class="hint">Update your PhD application checklist manually.</p>
-        <div class="progress-bar-wrap">
-          <div class="progress-label"><span>Research Proposal</span><span id="pct-proposal">0%</span></div>
-          <div class="progress-bar"><div class="progress-fill" id="fill-proposal"></div></div>
-        </div>
-        <div class="progress-bar-wrap" style="margin-top:14px;">
-          <div class="progress-label"><span>Statement of Purpose</span><span id="pct-sop">0%</span></div>
-          <div class="progress-bar"><div class="progress-fill" id="fill-sop"></div></div>
-        </div>
-        <div class="progress-bar-wrap" style="margin-top:14px;">
-          <div class="progress-label"><span>Applications Submitted</span><span id="pct-apps">0%</span></div>
-          <div class="progress-bar"><div class="progress-fill" id="fill-apps"></div></div>
-        </div>
-        <div class="form-row" style="margin-top:14px;gap:10px;">
-          <input type="range" min="0" max="100" value="0" oninput="updateProgress('proposal',this.value)" style="flex:1;min-width:80px;"/>
-          <input type="range" min="0" max="100" value="0" oninput="updateProgress('sop',this.value)" style="flex:1;min-width:80px;"/>
-          <input type="range" min="0" max="100" value="0" oninput="updateProgress('apps',this.value)" style="flex:1;min-width:80px;"/>
+      <section class="card">
+        <h3>Planning notes</h3>
+        <p class="hint">Anything that does not belong in the formal application documents.</p>
+        <div class="notes-grid">
+          <div class="note-card">
+            <h4>Supervisors &amp; emails</h4>
+            <textarea data-key="phd_supervisors" placeholder="Names, email IDs, response notes…"></textarea>
+          </div>
+          <div class="note-card">
+            <h4>Funding &amp; logistics</h4>
+            <textarea data-key="phd_funding" placeholder="Scholarships, visas, housing, cost of living…"></textarea>
+          </div>
         </div>
       </section>
-
     </div>
   </div>
 </section>
-<!-- END PhD -->
 
-<!-- ═══ RESEARCH TOOLS ═══ -->
+<!-- TOOLS -->
 <section id="tools" class="tab-page">
-  <h2 class="section-title">🧠 Research &amp; AI Tools</h2>
-  <p class="section-sub">The best free AI-powered research tools for literature, documentary studies and archival research.</p>
+  <h2 class="section-title">Research &amp; writing tools</h2>
+  <p class="section-sub">
+    A small, opinionated stack that covers discovery, citation, storage and drafting without noise.
+  </p>
 
-  <div class="tool-grid">
-    <div class="tool-card reveal reveal-d1">
-      <div style="font-size:28px;margin-bottom:4px;">🐇</div>
-      <h4>ResearchRabbit</h4>
-      <p>AI-powered citation mapping. Discover related papers, track new publications and visualize research networks. Best for literature reviews.</p>
-      <a href="https://www.researchrabbit.ai" class="open-btn ob-p">Open Tool ↗</a>
-    </div>
-    <div class="tool-card reveal reveal-d2">
-      <div style="font-size:28px;margin-bottom:4px;">🔗</div>
-      <h4>Connected Papers</h4>
-      <p>Visual graph of academic papers — paste any paper and see its entire citation network. Essential for finding foundational texts.</p>
-      <a href="https://www.connectedpapers.com" class="open-btn ob-t">Open Tool ↗</a>
-    </div>
-    <div class="tool-card reveal reveal-d3">
-      <div style="font-size:28px;margin-bottom:4px;">🤖</div>
-      <h4>Semantic Scholar</h4>
-      <p>AI-powered academic search engine with 200M+ papers. Semantic search, citation summaries, paper recommendations.</p>
-      <a href="https://www.semanticscholar.org" class="open-btn ob-c">Open Tool ↗</a>
-    </div>
-    <div class="tool-card reveal reveal-d4">
-      <div style="font-size:28px;margin-bottom:4px;">📚</div>
-      <h4>Zotero</h4>
-      <p>Free reference manager. Save sources from any website, auto-generate citations in MLA/APA/Chicago, sync across devices.</p>
-      <a href="https://www.zotero.org" class="open-btn ob-m">Open Tool ↗</a>
-    </div>
-    <div class="tool-card reveal reveal-d1">
-      <div style="font-size:28px;margin-bottom:4px;">🔓</div>
-      <h4>CORE — Open Access</h4>
-      <p>200M+ open access research papers. Free full-text PDFs of academic articles. No paywall. Essential for Indian researchers.</p>
-      <a href="https://core.ac.uk" class="open-btn ob-p">Open Tool ↗</a>
-    </div>
-    <div class="tool-card reveal reveal-d2">
-      <div style="font-size:28px;margin-bottom:4px;">📰</div>
-      <h4>JSTOR</h4>
-      <p>100 free articles per month. Huge archive of literary criticism, cultural studies, history and humanities journals.</p>
-      <a href="https://www.jstor.org" class="open-btn ob-t">Open JSTOR ↗</a>
-    </div>
-    <div class="tool-card reveal reveal-d3">
-      <div style="font-size:28px;margin-bottom:4px;">🧬</div>
-      <h4>Elicit</h4>
-      <p>AI research assistant — ask a research question, get relevant papers, summaries and key claims automatically extracted.</p>
-      <a href="https://elicit.com" class="open-btn ob-c">Open Tool ↗</a>
-    </div>
-    <div class="tool-card reveal reveal-d4">
-      <div style="font-size:28px;margin-bottom:4px;">🗂️</div>
-      <h4>Notion</h4>
-      <p>Free all-in-one workspace for research notes, reading logs, PhD timelines and writing outlines. Works beautifully as a second brain.</p>
-      <a href="https://www.notion.so" class="open-btn ob-m">Open Notion ↗</a>
-    </div>
-    <div class="tool-card reveal reveal-d1">
-      <div style="font-size:28px;margin-bottom:4px;">📖</div>
-      <h4>Google Scholar</h4>
-      <p>The most comprehensive free academic search engine. Search by author, journal, year. Set up citation alerts for your key topics.</p>
-      <a href="https://scholar.google.com" class="open-btn ob-p">Open Scholar ↗</a>
-    </div>
-    <div class="tool-card reveal reveal-d2">
-      <div style="font-size:28px;margin-bottom:4px;">🏛️</div>
-      <h4>Internet Archive</h4>
-      <p>Borrow digitized books for free, access historical newspapers and archived websites. Invaluable for archival documentary research.</p>
-      <a href="https://archive.org" class="open-btn ob-t">Open Archive ↗</a>
-    </div>
-    <div class="tool-card reveal reveal-d3">
-      <div style="font-size:28px;margin-bottom:4px;">✍️</div>
-      <h4>Perplexity AI</h4>
-      <p>AI research assistant with live web citations. Ask research questions, get sourced answers instantly. Great for literature surveys.</p>
-      <a href="https://www.perplexity.ai" class="open-btn ob-c">Open Tool ↗</a>
-    </div>
-    <div class="tool-card reveal reveal-d4">
-      <div style="font-size:28px;margin-bottom:4px;">📝</div>
-      <h4>Google Docs</h4>
-      <p>Your main writing workspace. Click below to open a blank document instantly — no login steps needed.</p>
-      <a href="https://docs.new" class="open-btn ob-m">New Doc ↗</a>
-    </div>
+  <div class="r-grid">
+    <article class="r-card">
+      <div class="r-tag">Discovery</div>
+      <div class="r-title">ResearchRabbit</div>
+      <p class="r-sub">Visual citation maps from seed articles; great for seeing clusters in your area.</p>
+      <div class="r-btns"><a class="r-btn rb-main" href="https://www.researchrabbit.ai">Open ↗</a></div>
+    </article>
+    <article class="r-card">
+      <div class="r-tag">Discovery</div>
+      <div class="r-title">Connected Papers</div>
+      <p class="r-sub">Graph of related papers around a starting text; very helpful when entering a new topic.</p>
+      <div class="r-btns"><a class="r-btn rb-main" href="https://www.connectedpapers.com">Open ↗</a></div>
+    </article>
+    <article class="r-card">
+      <div class="r-tag">Search</div>
+      <div class="r-title">Semantic Scholar</div>
+      <p class="r-sub">Search engine tuned for scholarly work; often links open‑access PDFs.</p>
+      <div class="r-btns"><a class="r-btn rb-main" href="https://www.semanticscholar.org">Open ↗</a></div>
+    </article>
+    <article class="r-card">
+      <div class="r-tag">Citations</div>
+      <div class="r-title">Zotero</div>
+      <p class="r-sub">Free reference manager with browser capture; handles MLA, Chicago, APA and more.</p>
+      <div class="r-btns"><a class="r-btn rb-main" href="https://www.zotero.org">Open ↗</a></div>
+    </article>
+    <article class="r-card">
+      <div class="r-tag">Open access</div>
+      <div class="r-title">CORE</div>
+      <p class="r-sub">Large index of open‑access articles and theses; excellent for humanities work.</p>
+      <div class="r-btns"><a class="r-btn rb-main" href="https://core.ac.uk">Open ↗</a></div>
+    </article>
+    <article class="r-card">
+      <div class="r-tag">Archive</div>
+      <div class="r-title">Internet Archive</div>
+      <p class="r-sub">Digitised books, periodicals and media; crucial for archival documentary research.</p>
+      <div class="r-btns"><a class="r-btn rb-main" href="https://archive.org">Open ↗</a></div>
+    </article>
   </div>
 </section>
-<!-- END TOOLS -->
 
-<!-- ═══ CALENDAR ═══ -->
+<!-- CALENDAR -->
 <section id="calendar" class="tab-page">
-  <h2 class="section-title">📅 Calendar &amp; Deadlines</h2>
-  <p class="section-sub">Google Calendar embed + deadline tracker with automatic urgency alerts.</p>
+  <h2 class="section-title">Calendar &amp; planning</h2>
+  <p class="section-sub">
+    Calendar embed plus light planning space so you always see the shape of your week.
+  </p>
 
   <div class="two-col">
     <div class="stack">
-      <section class="card reveal">
+      <section class="card">
         <h3>Google Calendar</h3>
-        <p class="hint">Your calendar embedded directly. Click any event to open Google Calendar.</p>
-        <div style="border-radius:14px;overflow:hidden;border:1px solid var(--border);">
-          <iframe src="https://calendar.google.com/calendar/embed?src=en.indian%23holiday%40group.v.calendar.google.com&ctz=Asia%2FKolkata"
-            style="width:100%;height:380px;border:0;display:block;" loading="lazy"></iframe>
+        <p class="hint">Example Indian holidays calendar; replace with your own embed if you like.</p>
+        <div style="border-radius:14px;overflow:hidden;border:1px solid var(--border);background:#FAFAFA;">
+          <iframe
+            src="https://calendar.google.com/calendar/embed?src=en.indian%23holiday%40group.v.calendar.google.com&ctz=Asia%2FKolkata"
+            style="width:100%;height:320px;border:0;display:block;"
+            loading="lazy"></iframe>
         </div>
-        <div style="margin-top:12px;">
-          <a href="https://calendar.google.com" class="link-btn">📅 Open Google Calendar ↗</a>
+        <div style="margin-top:10px;">
+          <a class="r-btn rb-main" href="https://calendar.google.com">Open Google Calendar ↗</a>
         </div>
       </section>
     </div>
 
     <div class="stack">
-      <section class="card reveal">
-        <h3>Deadline Manager</h3>
-        <p class="hint">All your deadlines with live urgency status.</p>
-        <div class="form-row">
-          <input type="text" id="cal-dl-name" placeholder="Deadline name" style="flex:2;"/>
-          <input type="date" id="cal-dl-date"/>
-          <button class="primary" onclick="addCalDeadline()">+ Add</button>
-        </div>
-        <div class="deadline-grid" id="cal-deadline-container"></div>
-      </section>
-
-      <section class="card reveal">
-        <h3>Study Planner Notes</h3>
-        <p class="hint">Weekly plans, exam schedules, daily goals. Auto-saved.</p>
+      <section class="card">
+        <h3>Weekly &amp; monthly planner</h3>
+        <p class="hint">Keep plans visible next to your academic resources.</p>
         <div class="notes-grid">
           <div class="note-card">
-            <h4>📅 This Week's Plan</h4>
-            <textarea data-key="cal_week" placeholder="Mon: German A2 grammar…&#10;Tue: Read Said's Orientalism…"></textarea>
+            <h4>This week</h4>
+            <textarea data-key="cal_week" placeholder="3–5 key tasks for Lit / German / PhD…"></textarea>
           </div>
           <div class="note-card">
-            <h4>🎯 Monthly Goals</h4>
-            <textarea data-key="cal_month" placeholder="Finish proposal draft, submit JNU application…"></textarea>
+            <h4>Month highlights</h4>
+            <textarea data-key="cal_month" placeholder="Deadlines, exam windows, travel…"></textarea>
           </div>
           <div class="note-card">
-            <h4>📋 Exam Schedule</h4>
-            <textarea data-key="cal_exams" placeholder="UGC NET date, university exam dates…"></textarea>
-          </div>
-          <div class="note-card">
-            <h4>✅ Daily To-Do</h4>
-            <textarea data-key="cal_todo" placeholder="Today's tasks…"></textarea>
+            <h4>Today</h4>
+            <textarea data-key="cal_today" placeholder="Today’s 3 most important tasks…"></textarea>
           </div>
         </div>
       </section>
     </div>
   </div>
 </section>
-<!-- END CALENDAR -->
 
 </main>
 
-<footer class="footer">
-  <b>Lit Hub</b> · Curated by Deepshikha · MA English Literature · University of Delhi<br>
-  German A1→C2 · PhD Applications 2026 · Archival &amp; Documentary Research<br>
-  <span style="font-size:11.5px;opacity:0.6;">All notes saved locally in your browser · No data sent anywhere · Built with ❤️</span>
+<footer>
+  <div class="inner">
+    <span>Lit Hub · Deepshikha — MA English, German, PhD prep</span>
+    <span>All notes stay local in this browser · no tracking</span>
+  </div>
 </footer>
-
 <script>
-// ══════════════════════════════════════
-// TAB NAVIGATION
-// ══════════════════════════════════════
+// Tabs
 document.querySelectorAll('.tab').forEach(btn=>{
   btn.addEventListener('click',()=>{
-    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    const id=btn.dataset.tab;
+    document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
     document.querySelectorAll('.tab-page').forEach(p=>p.classList.remove('active'));
     btn.classList.add('active');
-    const page=document.getElementById(btn.dataset.tab);
-    if(page){page.classList.add('active');triggerReveal();}
-  });
-});
-
-// Jump buttons (hero + nav cards + mode cards)
-document.querySelectorAll('[data-jump]').forEach(el=>{
-  el.addEventListener('click',()=>{
-    const target=el.dataset.jump;
-    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-    document.querySelectorAll('.tab-page').forEach(p=>p.classList.remove('active'));
-    const tab=document.querySelector(`.tab[data-tab="${target}"]`);
-    const page=document.getElementById(target);
-    if(tab)tab.classList.add('active');
-    if(page){page.classList.add('active');triggerReveal();}
+    const page=document.getElementById(id);
+    if(page) page.classList.add('active');
     window.scrollTo({top:0,behavior:'smooth'});
   });
 });
 
-// ══════════════════════════════════════
-// SCROLL REVEAL
-// ══════════════════════════════════════
-function triggerReveal(){
-  setTimeout(()=>{
-    document.querySelectorAll('.tab-page.active .reveal').forEach((el,i)=>{
-      setTimeout(()=>el.classList.add('visible'),i*40);
-    });
-  },60);
-}
-// Intersection Observer for scroll
-const revealObserver=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
-},{threshold:0.1});
-document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
-triggerReveal();
-
-// ══════════════════════════════════════
-// COUNT-UP ANIMATION
-// ══════════════════════════════════════
-function animateCountUp(){
-  document.querySelectorAll('.count-up').forEach(el=>{
-    const target=parseInt(el.dataset.target);
-    let current=0;
-    const step=Math.ceil(target/40);
-    const timer=setInterval(()=>{
-      current=Math.min(current+step,target);
-      el.textContent=current+(el.dataset.target==='100'?'+':'');
-      if(current>=target)clearInterval(timer);
-    },35);
-  });
-}
-setTimeout(animateCountUp,400);
-
-// ══════════════════════════════════════
-// AUTO-SAVE NOTES (localStorage)
-// ══════════════════════════════════════
-function initNotes(){
-  document.querySelectorAll('textarea[data-key]').forEach(ta=>{
-    const key='lithub_'+ta.dataset.key;
-    ta.value=localStorage.getItem(key)||'';
-    ta.addEventListener('input',()=>localStorage.setItem(key,ta.value));
-  });
-}
-initNotes();
-
-// ══════════════════════════════════════
-// YOUTUBE EMBED (Pill Playlists)
-// ══════════════════════════════════════
-function extractYTId(url){
-  const m=url.match(/[?&]list=([^&]+)/);
-  return m?m[1]:null;
-}
-function renderYTPanel(panel){
-  const key=panel.dataset.ytkey;
-  const saved=localStorage.getItem('lithub_'+key);
-  if(saved){
-    panel.innerHTML=`
-      <div class="yt-embed-result">
-        <iframe src="https://www.youtube.com/embed/videoseries?list=${saved}" allowfullscreen loading="lazy"></iframe>
-      </div>
-      <div class="yt-change-row">
-        <p>Playlist saved. Paste a new URL below to change.</p>
-        <button class="small" onclick="clearYT('${key}',this)">Change Playlist</button>
-      </div>`;
-  } else {
-    panel.innerHTML=`
-      <div class="yt-input-area">
-        <p class="yt-hint">Paste a YouTube playlist URL to embed it here:</p>
-        <div class="yt-input-row">
-          <input type="text" placeholder="https://www.youtube.com/playlist?list=..." id="inp_${key}"/>
-          <button class="primary" onclick="saveYT('${key}')">Embed</button>
-        </div>
-      </div>`;
-  }
-}
-function saveYT(key){
-  const inp=document.getElementById('inp_'+key);
-  const id=extractYTId(inp.value.trim());
-  if(!id){alert('Please paste a valid YouTube playlist URL.');return;}
-  localStorage.setItem('lithub_'+key,id);
-  const panel=document.querySelector(`[data-ytkey="${key}"]`);
-  if(panel)renderYTPanel(panel);
-}
-function clearYT(key,btn){
-  localStorage.removeItem('lithub_'+key);
-  const panel=document.querySelector(`[data-ytkey="${key}"]`);
-  if(panel)renderYTPanel(panel);
-}
-document.querySelectorAll('.embed-panel').forEach(renderYTPanel);
-
-// Pill switching
-document.querySelectorAll('.pill-row').forEach(row=>{
-  row.querySelectorAll('.pill').forEach(pill=>{
-    pill.addEventListener('click',()=>{
-      row.querySelectorAll('.pill').forEach(p=>p.classList.remove('active'));
-      pill.classList.add('active');
-      const wrap=row.nextElementSibling;
-      wrap.querySelectorAll('.embed-panel').forEach(p=>p.classList.remove('active'));
-      const target=wrap.querySelector('#'+pill.dataset.target);
-      if(target){target.classList.add('active');renderYTPanel(target);}
-    });
+// Jump shortcuts
+document.querySelectorAll('[data-jump]').forEach(el=>{
+  el.addEventListener('click',()=>{
+    const id=el.dataset.jump;
+    const tab=document.querySelector(`.tab[data-tab="${id}"]`);
+    const page=document.getElementById(id);
+    if(tab && page){
+      document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.tab-page').forEach(p=>p.classList.remove('active'));
+      tab.classList.add('active');
+      page.classList.add('active');
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
   });
 });
 
-// ══════════════════════════════════════
-// DEADLINE MANAGER
-// ══════════════════════════════════════
+// LocalStorage notes
+(function initNotes(){
+  const areas=document.querySelectorAll('textarea[data-key]');
+  areas.forEach(ta=>{
+    const key='lithub_'+ta.dataset.key;
+    const saved=localStorage.getItem(key);
+    if(saved!==null) ta.value=saved;
+    ta.addEventListener('input',()=>localStorage.setItem(key,ta.value));
+  });
+})();
+
+// PhD tracker
+function loadPhD(){
+  try{return JSON.parse(localStorage.getItem('lithub_phd')||'[]');}
+  catch(e){return[];}
+}
+function savePhD(arr){
+  localStorage.setItem('lithub_phd',JSON.stringify(arr));
+}
+function renderPhD(){
+  const tbody=document.getElementById('phd-tbody');
+  if(!tbody) return;
+  const rows=loadPhD();
+  if(!rows.length){
+    tbody.innerHTML='<tr><td colspan="5" style="font-size:12px;color:var(--muted);text-align:center;padding:10px;">No applications yet.</td></tr>';
+    return;
+  }
+  tbody.innerHTML=rows.map((r,i)=>`
+    <tr>
+      <td><strong>${r.uni||''}</strong></td>
+      <td>${r.prog||''}</td>
+      <td>${r.date ? new Date(r.date).toLocaleDateString('en-IN',{day:"2-digit",month:"short",year:"numeric"}) : '-'}</td>
+      <td><span class="badge ${r.status}">${r.status.charAt(0).toUpperCase()+r.status.slice(1)}</span></td>
+      <td><button class="primary" type="button" style="padding:3px 8px;font-size:11px;" onclick="deletePhDRow(${i})">×</button></td>
+    </tr>
+  `).join('');
+}
+function addPhDRow(){
+  const uni=document.getElementById('phd-uni').value.trim();
+  const prog=document.getElementById('phd-prog').value.trim();
+  const date=document.getElementById('phd-date').value;
+  const status=document.getElementById('phd-status').value;
+  if(!uni){alert('Enter at least the university name.');return;}
+  const rows=loadPhD();
+  rows.push({uni,prog,date,status});
+  savePhD(rows);
+  document.getElementById('phd-uni').value='';
+  document.getElementById('phd-prog').value='';
+  document.getElementById('phd-date').value='';
+  renderPhD();
+  syncDeadlinesFromPhD();
+}
+function deletePhDRow(i){
+  const rows=loadPhD();
+  rows.splice(i,1);
+  savePhD(rows);
+  renderPhD();
+  syncDeadlinesFromPhD();
+}
+renderPhD();
+
+// Deadlines
 function loadDeadlines(){
-  return JSON.parse(localStorage.getItem('lithub_deadlines')||'[]');
+  try{return JSON.parse(localStorage.getItem('lithub_deadlines')||'[]');}
+  catch(e){return[];}
 }
 function saveDeadlines(arr){
   localStorage.setItem('lithub_deadlines',JSON.stringify(arr));
 }
-function getUrgency(dateStr){
-  const diff=Math.ceil((new Date(dateStr)-new Date())/(1000*60*60*24));
-  if(diff<0)return{cls:'urgent',txt:'⛔ Passed'};
-  if(diff===0)return{cls:'urgent',txt:'🔴 Due Today!'};
-  if(diff<=7)return{cls:'urgent',txt:`🔴 ${diff} day${diff>1?'s':''} left`};
-  if(diff<=21)return{cls:'soon',txt:`🟡 ${diff} days left`};
-  return{cls:'safe',txt:`🟢 ${diff} days left`};
+function daysDiff(dateStr){
+  const d=new Date(dateStr);const today=new Date();
+  const diff=Math.ceil((d-today)/(1000*60*60*24));
+  return diff;
 }
-function renderDeadlines(containerId){
-  const container=document.getElementById(containerId);
-  if(!container)return;
-  const deadlines=loadDeadlines();
-  if(!deadlines.length){
-    container.innerHTML='<p style="font-size:13px;color:var(--muted);padding:14px 0;">No deadlines added yet. Add one above.</p>';
+function urgencyLabel(dateStr){
+  const d=daysDiff(dateStr);
+  if(isNaN(d)) return {cls:'safe',txt:'No date'};
+  if(d<0) return {cls:'urgent',txt:'Passed'};
+  if(d===0) return {cls:'urgent',txt:'Due today'};
+  if(d<=7) return {cls:'urgent',txt:`${d} day${d>1?'s':''} left`};
+  if(d<=21) return {cls:'soon',txt:`${d} days left`};
+  return {cls:'safe',txt:`${d} days left`};
+}
+function renderDeadlines(){
+  const box=document.getElementById('deadline-container');
+  if(!box) return;
+  const items=loadDeadlines();
+  if(!items.length){
+    box.innerHTML='<p style="font-size:12px;color:var(--muted);padding:6px 2px;">No deadlines yet.</p>';
     return;
   }
-  container.innerHTML=deadlines.map((d,i)=>{
-    const u=getUrgency(d.date);
-    return`<div class="deadline-card">
-      <div class="deadline-title">${d.name}</div>
-      <div class="deadline-meta">📅 ${new Date(d.date).toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'})}</div>
-      <div class="deadline-status ${u.cls}">${u.txt}</div>
-      <button class="small" style="margin-top:10px;" onclick="deleteDeadline(${i})">Remove</button>
-    </div>`;
+  box.innerHTML=items.map((d,i)=>{
+    const meta=urgencyLabel(d.date);
+    return `
+      <div class="deadline-card">
+        <div class="deadline-title">${d.name}</div>
+        <div class="deadline-meta">${d.date ? new Date(d.date).toLocaleDateString('en-IN',{day:"2-digit",month:"short",year:"numeric"}) : 'No date set'}</div>
+        <div class="deadline-status ${meta.cls}">${meta.txt}</div>
+        <button class="primary" type="button" style="margin-top:6px;padding:3px 8px;font-size:11px;background:#111827;" onclick="deleteDeadline(${i})">Remove</button>
+      </div>
+    `;
   }).join('');
 }
 function addDeadline(){
   const name=document.getElementById('dl-name').value.trim();
   const date=document.getElementById('dl-date').value;
-  if(!name||!date){alert('Please enter a name and date.');return;}
-  const arr=loadDeadlines();arr.push({name,date});saveDeadlines(arr);
+  if(!name){alert('Enter a name for the deadline.');return;}
+  const items=loadDeadlines();
+  items.push({name,date});
+  saveDeadlines(items);
   document.getElementById('dl-name').value='';
   document.getElementById('dl-date').value='';
-  renderDeadlines('deadline-container');
-  renderDeadlines('cal-deadline-container');
-}
-function addCalDeadline(){
-  const name=document.getElementById('cal-dl-name').value.trim();
-  const date=document.getElementById('cal-dl-date').value;
-  if(!name||!date){alert('Please enter a name and date.');return;}
-  const arr=loadDeadlines();arr.push({name,date});saveDeadlines(arr);
-  document.getElementById('cal-dl-name').value='';
-  document.getElementById('cal-dl-date').value='';
-  renderDeadlines('deadline-container');
-  renderDeadlines('cal-deadline-container');
+  renderDeadlines();
 }
 function deleteDeadline(i){
-  const arr=loadDeadlines();arr.splice(i,1);saveDeadlines(arr);
-  renderDeadlines('deadline-container');
-  renderDeadlines('cal-deadline-container');
+  const items=loadDeadlines();
+  items.splice(i,1);
+  saveDeadlines(items);
+  renderDeadlines();
 }
-renderDeadlines('deadline-container');
-renderDeadlines('cal-deadline-container');
-
-// ══════════════════════════════════════
-// PhD TRACKER
-// ══════════════════════════════════════
-function loadPhD(){return JSON.parse(localStorage.getItem('lithub_phd')||'[]');}
-function savePhD(arr){localStorage.setItem('lithub_phd',JSON.stringify(arr));}
-function renderPhD(){
-  const tbody=document.getElementById('phd-tbody');
-  if(!tbody)return;
-  const arr=loadPhD();
-  tbody.innerHTML=arr.length?arr.map((r,i)=>`
-    <tr>
-      <td><b>${r.uni}</b></td>
-      <td>${r.prog}</td>
-      <td>${r.date?new Date(r.date).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}):'-'}</td>
-      <td><span class="badge ${r.status}">${r.status.charAt(0).toUpperCase()+r.status.slice(1)}</span></td>
-      <td><button class="small" onclick="deletePhD(${i})">✕</button></td>
-    </tr>`).join('')
-    :'<tr><td colspan="5" style="color:var(--muted);font-size:13px;text-align:center;padding:18px;">No applications yet. Add one above.</td></tr>';
-}
-function addPhD(){
-  const uni=document.getElementById('phd-uni').value.trim();
-  const prog=document.getElementById('phd-prog').value.trim();
-  const date=document.getElementById('phd-date').value;
-  const status=document.getElementById('phd-status').value;
-  if(!uni){alert('Please enter a university name.');return;}
-  const arr=loadPhD();arr.push({uni,prog,date,status});savePhD(arr);
-  document.getElementById('phd-uni').value='';
-  document.getElementById('phd-prog').value='';
-  document.getElementById('phd-date').value='';
-  renderPhD();
-}
-function deletePhD(i){
-  const arr=loadPhD();arr.splice(i,1);savePhD(arr);renderPhD();
-}
-renderPhD();
-
-// ══════════════════════════════════════
-// PROGRESS BARS
-// ══════════════════════════════════════
-function updateProgress(id,val){
-  const fill=document.getElementById('fill-'+id);
-  const pct=document.getElementById('pct-'+id);
-  if(fill)fill.style.width=val+'%';
-  if(pct)pct.textContent=val+'%';
-  localStorage.setItem('lithub_prog_'+id,val);
-}
-['proposal','sop','apps'].forEach(id=>{
-  const saved=localStorage.getItem('lithub_prog_'+id)||0;
-  updateProgress(id,saved);
-  const sliders=document.querySelectorAll(`input[oninput*="${id}"]`);
-  sliders.forEach(s=>s.value=saved);
-});
-
-// ══════════════════════════════════════
-// ANIMATE PROGRESS BARS ON LOAD
-// ══════════════════════════════════════
-setTimeout(()=>{
-  document.querySelectorAll('.progress-fill').forEach(el=>{
-    const w=el.style.width;el.style.width='0%';
-    setTimeout(()=>el.style.width=w,200);
+function syncDeadlinesFromPhD(){
+  // Optional: simple sync (add entries from PhD rows that have dates)
+  const phds=loadPhD();
+  const base=loadDeadlines();
+  const existingNames=new Set(base.map(d=>d.name+','+d.date));
+  phds.forEach(r=>{
+    if(r.date){
+      const key=r.uni+','+r.date;
+      if(!existingNames.has(key)){
+        base.push({name:r.uni+' — '+(r.prog||''),date:r.date});
+        existingNames.add(key);
+      }
+    }
   });
-},300);
-
+  saveDeadlines(base);
+  renderDeadlines();
+}
+renderDeadlines();
+syncDeadlinesFromPhD();
 </script>
 </body>
 </html>
