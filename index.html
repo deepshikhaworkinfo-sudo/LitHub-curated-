@@ -654,29 +654,130 @@ tr:hover td{background:#F8F8FF;}
 /* COUNTER ANIMATION */
 .count-up{display:inline-block;}
 
-/* ── RESPONSIVE ── */
+/* ══════════════════════════════════════
+   RESPONSIVE — FULL MOBILE FIX
+══════════════════════════════════════ */
+
 @media(max-width:960px){
   .two-col{grid-template-columns:1fr;}
   .hero-wrap{grid-template-columns:1fr;}
   .hero-side{display:none;}
 }
+
 @media(max-width:680px){
-  .topbar{padding:10px 14px;}
-  .brand-text h1{font-size:18px;}
-  .tabs{overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px;scrollbar-width:none;}
+
+  /* TOPBAR */
+  .topbar{padding:10px 12px;gap:8px;}
+  .brand-text h1{font-size:17px;}
+  .brand-text p{display:none;}
+  .brand-icon{width:34px;height:34px;font-size:17px;}
+  .tabs{
+    overflow-x:auto;flex-wrap:nowrap;
+    padding-bottom:4px;width:100%;
+    scrollbar-width:none;-ms-overflow-style:none;
+  }
   .tabs::-webkit-scrollbar{display:none;}
-  .tab{padding:6px 12px;font-size:12px;}
-  .hero-main{padding:26px 20px;}
-  .hero-main h2{font-size:28px;}
-  .r-grid{grid-template-columns:1fr;}
-  .nav-grid{grid-template-columns:repeat(2,1fr);}
-  .content{padding:18px 12px 50px;}
-  .section-title{font-size:23px;}
+  .tab{padding:6px 12px;font-size:12px;flex-shrink:0;}
+
+  /* CONTENT */
+  .content{padding:14px 10px 50px;}
+
+  /* HERO */
+  .hero-main{padding:24px 18px;}
+  .hero-main h2{font-size:24px;}
+  .hero-main>p{font-size:13.5px;}
+  .hero-chips{gap:6px;}
+  .hero-chip{font-size:11.5px;padding:4px 10px;}
+  .hero-btns{gap:8px;}
+  .btn-hero{padding:10px 18px;font-size:13px;}
+  .hero-stats{gap:12px;font-size:12px;}
+  .hero-kicker{font-size:10px;}
+
+  /* STATS BAR */
   .stats-bar{display:none;}
+
+  /* SECTION TITLES */
+  .section-title{font-size:22px;}
+  .section-sub{font-size:13px;}
+
+  /* CARDS */
+  .card{padding:16px 14px;}
+  .card h3{font-size:17px;}
+  .card .hint{font-size:12.5px;}
+
+  /* NAV GRID */
+  .nav-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+  .nav-card{padding:16px 13px;}
+  .nav-card .icon{font-size:22px;margin-bottom:8px;}
+  .nav-card h3{font-size:13px;}
+  .nav-card p{font-size:11.5px;}
+
+  /* RESOURCE CARDS */
+  .r-grid{grid-template-columns:1fr;}
+  .r-card{padding:15px 13px;}
+  .r-title{font-size:13.5px;}
+  .r-sub{font-size:12.5px;}
+  .r-btn{font-size:11.5px;padding:6px 12px;}
+  .r-section{padding:12px 14px;}
+  .r-section h4{font-size:16px;}
+
+  /* GRAMMAR HEADINGS */
+  .grammar-heading{font-size:12.5px;padding:10px 13px;}
+
+  /* NOTES GRID */
+  .notes-grid{grid-template-columns:1fr;}
+  .note-card textarea{min-height:80px;font-size:13px;}
+
+  /* LINK LIST */
+  .link-list li{font-size:13px;}
+
+  /* TABLES */
+  .table-wrap{border-radius:10px;}
+  table{font-size:12.5px;}
+  th,td{padding:9px 10px;}
+
+  /* DEADLINE CARDS */
+  .deadline-grid{grid-template-columns:1fr;}
+  .deadline-title{font-size:13.5px;}
+
+  /* TOOL GRID */
+  .tool-grid{grid-template-columns:1fr;}
+  .tool-card{padding:16px;}
+  .tool-card h4{font-size:14px;}
+  .tool-card p{font-size:13px;}
+
+  /* FORMS */
+  .form-row{flex-direction:column;gap:8px;}
+  .form-row input,.form-row select,.form-row button{width:100%;min-width:unset;}
+  input[type="text"],input[type="date"],select{font-size:14px;padding:10px 12px;}
+
+  /* PILLS */
+  .pill-row{overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px;scrollbar-width:none;}
+  .pill-row::-webkit-scrollbar{display:none;}
+  .pill{flex-shrink:0;font-size:12.5px;}
+
+  /* BUTTONS */
+  .link-btn{font-size:12.5px;padding:8px 14px;}
+  button.primary{font-size:13.5px;padding:10px 18px;width:100%;}
+  .open-btn{font-size:12.5px;padding:8px 16px;}
+
+  /* ACCORDION */
+  .accordion summary{font-size:13px;}
+
+  /* FOOTER */
+  .footer{font-size:12px;padding:14px 10px 24px;}
+
+  /* HERO ORB — hide on mobile for performance */
+  .hero-orb1,.hero-orb2{display:none;}
 }
+
 @media(max-width:400px){
   .nav-grid{grid-template-columns:1fr;}
-  .hero-main h2{font-size:24px;}
+  .hero-main h2{font-size:21px;}
+  .tab{font-size:11px;padding:5px 10px;}
+  .brand-text h1{font-size:15px;}
+  .r-btns{flex-direction:column;}
+  .r-btn{width:100%;text-align:center;}
 }
 </style>
 </head>
