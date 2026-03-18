@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<base target="_blank">
+<base target="_top">
 <title>Lit Hub · Deepshikha</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -771,7 +771,7 @@ tr:hover td{background:#fff5f8;}
   <div class="r-section"><span>🎥</span><h4>Course Hero</h4></div>
   <p class="r-desc">500+ works: Hamlet, Beloved, Things Fall Apart, Wuthering Heights, Canterbury Tales and more.</p>
   <div class="r-grid">
-    <div class="r-card"><div class="r-tag rt-p">Channel</div><div class="r-title">Course Hero — Main Channel + All Playlists</div><div class="r-sub">Each major text has its own sub-playlist with summary and analysis videos. Best rapid-revision tool for MA.</div><div class="r-btns"><a href="https://www.youtube.com/channel/UCt_TSquDx7B-2RX6y3dx3_g" target="_blank" class="r-btn rb-p">Open Channel ↗</a><a href="https://www.youtube.com/c/coursehero/playlists" target="_blank" class="r-btn rb-t">All Playlists ↗</a></div></div>
+    <div class="r-card"><div class="r-tag rt-p">Channel</div><div class="r-title">Course Hero — Main Channel + All Playlists</div><div class="r-sub">Each major text has its own sub-playlist with summary and analysis videos. Best rapid-revision tool for MA.</div><div class="r-btns"><a href="https://www. youtube.com/@courseheroy" target="_blank" class="r-btn rb-p">Open Channel ↗</a><a href="https://www. youtube.com/@coursehero/playlists" target="_blank" class="r-btn rb-t">All Playlists ↗</a></div></div>
   </div>
 
   <div class="r-section"><span>🏛️</span><h4>Yale Open Courses</h4></div>
@@ -779,7 +779,7 @@ tr:hover td{background:#fff5f8;}
   <div class="r-grid">
     <div class="r-card"><div class="r-tag rt-p">Theory — ENGL 300</div><div class="r-title">Introduction to Theory of Literature — Prof. Paul H. Fry</div><div class="r-sub">26 lectures. Structuralism, Deconstruction, Psychoanalysis, Marxism, New Historicism, Feminist Theory, Ecocriticism. Most essential free theory course online.</div><div class="r-btns"><a href="https://www.youtube.com/playlist?list=PLD00D35CBC75941BD" target="_blank" class="r-btn rb-p">Open Playlist ↗</a></div></div>
     <div class="r-card"><div class="r-tag rt-t">American Lit</div><div class="r-title">The American Novel Since 1945 — Prof. Amy Hungerford</div><div class="r-sub">Wright, Nabokov, O'Connor, Kerouac, Pynchon, Morrison, DeLillo — 25 lectures on postwar American fiction.</div><div class="r-btns"><a href="https://www.youtube.com/playlist?list=PLE33BCD966FF96F23" target="_blank" class="r-btn rb-p">Open Playlist ↗</a></div></div>
-    <div class="r-card"><div class="r-tag rt-m">Full Channel</div><div class="r-title">YaleCourses — All Literature Playlists</div><div class="r-sub">Modern Poetry, Milton, Dante in Translation, Hemingway/Fitzgerald/Faulkner, The Ancient Greeks — all free with syllabi.</div><div class="r-btns"><a href="https://www.youtube.com/yalecourses" target="_blank" class="r-btn rb-p">Channel ↗</a><a href="https://oyc.yale.edu/courses" target="_blank" class="r-btn rb-t">Course Portal ↗</a></div></div>
+    <div class="r-card"><div class="r-tag rt-m">Full Channel</div><div class="r-title">YaleCourses — All Literature Playlists</div><div class="r-sub">Modern Poetry, Milton, Dante in Translation, Hemingway/Fitzgerald/Faulkner, The Ancient Greeks — all free with syllabi.</div><div class="r-btns"><a href="https://www. youtube.com/@yalecourses" target="_blank" class="r-btn rb-p">Channel ↗</a><a href="https://oyc.yale.edu/courses" target="_blank" class="r-btn rb-t">Course Portal ↗</a></div></div>
   </div>
 
   <div class="r-section"><span>🎓</span><h4>NPTEL / IIT University Courses</h4></div>
@@ -880,7 +880,7 @@ tr:hover td{background:#fff5f8;}
   <div class="r-section"><span>🎧</span><h4>LibriVox — Audiobooks on YouTube</h4></div>
   <p class="r-desc">Free public-domain audiobooks: plays, novels, poetry, essays — all read aloud in full.</p>
   <div class="r-grid">
-    <div class="r-card"><div class="r-tag rt-p">Main Channel</div><div class="r-title">LibriVox Audiobooks — YouTube Channel</div><div class="r-sub">Thousands of audiobooks: Shakespeare, Greek tragedy, Victorian novels, Modernist fiction, poetry collections.</div><div class="r-btns"><a href="https://www.youtube.com/c/LibriVoxAudiobooks" target="_blank" class="r-btn rb-p">Open Channel ↗</a><a href="https://www.youtube.com/@LibriVoxAudiobooks/playlists" target="_blank" class="r-btn rb-t">All Playlists ↗</a></div></div>
+    <div class="r-card"><div class="r-tag rt-p">Main Channel</div><div class="r-title">LibriVox Audiobooks — YouTube Channel</div><div class="r-sub">Thousands of audiobooks: Shakespeare, Greek tragedy, Victorian novels, Modernist fiction, poetry collections.</div><div class="r-btns"><a href="https://www. youtube.com/@LibriVoxAudiobooks" target="_blank" class="r-btn rb-p">Open Channel ↗</a><a href="https://www.youtube.com/@LibriVoxAudiobooks/playlists" target="_blank" class="r-btn rb-t">All Playlists ↗</a></div></div>
     <div class="r-card"><div class="r-tag rt-t">Drama</div><div class="r-title">One-Act Play Collection — LibriVox</div><div class="r-sub">Full audio recordings of one-act plays by various authors. Regularly updated with new recordings.</div><div class="r-btns"><a href="https://www.youtube.com/watch?v=_zvGG1KVNSo" target="_blank" class="r-btn rb-p">Open Recording ↗</a></div></div>
     <div class="r-card"><div class="r-tag rt-m">20th Century</div><div class="r-title">LibriVox 20th Anniversary Collection</div><div class="r-sub">Curated anniversary collection of landmark recordings spanning all literary genres and periods.</div><div class="r-btns"><a href="https://www.youtube.com/watch?v=qemf9gpHGYE" target="_blank" class="r-btn rb-p">Open Recording ↗</a></div></div>
   </div>
@@ -983,7 +983,7 @@ tr:hover td{background:#fff5f8;}
       <div class="lv-row"><span class="lv a1">A1</span><span class="lv a2">A2</span><span class="lv b1">B1</span><span class="lv b2">B2</span><span class="lv c1">C1</span></div>
       <div class="r-title">Learn German with Anja — Full Channel</div>
       <div class="r-sub">Native speaker. Warm, clear teaching from A1 to C1. Huge library of grammar, vocabulary and culture videos. Excellent for all levels.</div>
-      <div class="r-btns"><a href="https://www.youtube.com/c/LearnGermanwithAnja" target="_blank" class="r-btn rb-p">Open Channel ↗</a></div>
+      <div class="r-btns"><a href="https://www. youtube.com/@LearnGermanwithAnja" target="_blank" class="r-btn rb-p">Open Channel ↗</a></div>
     </div>
     <div class="r-card">
       <div class="r-tag rt-t">Channel</div>
@@ -1674,6 +1674,7 @@ renderDeadlines('cal-deadline-container');
   
   renderDeadlines('deadline-container');
   renderDeadlines('cal-deadline-container');
+
 
 </script>
 
